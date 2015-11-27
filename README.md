@@ -1,2 +1,2 @@
-# Q_
+# eStructures
 Extended data structures for JavaScript...
