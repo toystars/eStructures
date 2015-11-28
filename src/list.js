@@ -1,6 +1,3 @@
-/*
-  * linkedlist data structure implementation
-*/
 /**
   * Creates an empty List.
   * @class A List is a data structure that declares the behavior of a collection 

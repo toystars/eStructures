@@ -5,7 +5,9 @@ module.exports = function(config) {
     reporters: ['spec'],
     browsers: ['PhantomJS'],
     files: [
+      'src/list.js',
       'src/linkedlist.js',
+      'src/list-test.jss',
       'tests/linkedlist-test.js'
     ]
   });
