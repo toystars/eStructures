@@ -19,8 +19,13 @@ var eList = function() {
     * Property to show that object is a list
     * To be used in inner functions
     */
+  list.eList = true;
+
+  /**
+    * Function to get list status of object
+    */
   list.isList = function() {
-    return true;
+    return list.eList;
   };
 
   /**
@@ -54,13 +59,23 @@ var eList = function() {
 
     // if arguments.length === 2, treat first as index and second as item
     if (arguments.length === 2) {
-      // insert item into the specified index
+      // check if specified index is a number
+      if ((typeof index !== 'number') || (index % 1 !== 0) || (index < 0)) {
+        return false;
+      }
 
+      // all checks passed, insert into list
+      if (list.data.length - 1 < index) {
+        // push into array
+        list.data.push(item);
+        return true;
+      } else if (index < list.data.length - 1) {
+        // spliice array and insert item
+        list.data.splice(index, 0, item);
+        return true;
+      }
     }
-
-
-    
-    return true;
+    return false;
   };
 
   return list;
