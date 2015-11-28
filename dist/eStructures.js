@@ -149,7 +149,7 @@ var eList = function() {
     * @return {Object} Object at index if found, -1 if error occur
     */
   list.get = function(index) {
-    if (index === undefined || index < 0 || index >= list.size()) {
+    if (index === undefined || index < 0 || list.size() === 0 || index >= list.size()) {
       return -1;
     }
     return list.data[index];
@@ -167,6 +167,34 @@ var eList = function() {
     */
   list.toString = function() {
     return list.data.toString();
+  };
+
+  /**
+    * Property to be used to loop through list elements
+    */
+  list.iterator = {
+    currentPosition: 0,
+    next: function() {
+      var item = list.get(list.iterator.currentPosition);
+      this.currentPosition += 1;
+      return item;
+    },
+    hasNext: function() {
+      return this.currentPosition < list.size();
+    },
+    iterate: function(callBack) {
+      while (list.iterator.hasNext()) {
+        callBack(list.iterator.next(), list.iterator.currentPosition);
+      }
+    }
+  };
+
+  /**
+    * @return {Object} Iterator containing useful functions
+    * to be used to easily loop through all list elements
+    */
+  list.getIterator = function() {
+    return list.iterator;
   };
 
   return list;

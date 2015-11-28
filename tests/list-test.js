@@ -77,6 +77,13 @@ describe("eList - get string representation of the list", function() {
 
 describe("eList - get element at specified index", function() {
   var list = new eList();
+  it("should return -1 when list contains no element", function() {
+    expect(list.get(2)).toBe(-1);
+  });
+});
+
+describe("eList - get element at specified index", function() {
+  var list = new eList();
   list.add(5);
   list.add(22);
   list.add("eList");
@@ -132,5 +139,94 @@ describe("eList - add another eList object to current eList at specified index",
 
   it("should return current size of eList after inflating with other eList argument", function () {
     expect(list.addAll(1, secondList)).toBe(5);
+  });
+});
+
+describe("eList - use iterator object to loop through the list (Manual)", function() {
+  var list = new eList();
+  list.add(1);
+  list.add(2);
+  list.add(3);
+  // get iterator from list
+  var iterator = list.getIterator();
+
+  it("should have iterator currentPosition to be 0", function() {
+    expect(iterator.currentPosition).toBe(0);
+  });
+
+  it("should return true for iterator.hasNext()", function() {
+    expect(iterator.hasNext()).toBe(true);
+  });
+
+  it("should have iterator.next() to equal first element in list", function() {
+    expect(iterator.next()).toBe(1);
+  });
+
+  it("should have iterator currentPosition to be 1", function() {
+    expect(iterator.currentPosition).toBe(1);
+  });
+
+  it("should return true for iterator.hasNext()", function() {
+    expect(iterator.hasNext()).toBe(true);
+  });
+
+  it("should have iterator.next() to equal second element in list", function() {
+    expect(iterator.next()).toBe(2);
+  });
+
+  it("should have iterator currentPosition to be 2", function() {
+    expect(iterator.currentPosition).toBe(2);
+  });
+
+  it("should return true for iterator.hasNext()", function() {
+    expect(iterator.hasNext()).toBe(true);
+  });
+
+  it("should have iterator.next() to equal third element in list", function() {
+    expect(iterator.next()).toBe(3);
+  });
+
+  it("should have iterator currentPosition to be 3", function() {
+    expect(iterator.currentPosition).toBe(3);
+  });
+
+  it("should return false for iterator.hasNext()", function() {
+    expect(iterator.hasNext()).toBe(false);
+  });
+});
+
+describe("eList - use iterator object to loop through the list (Automatic)", function() {
+  var list = new eList();
+  list.add(1);
+  list.add(2);
+  list.add(3);
+  // get iterator from list
+  var iterator = list.getIterator();
+  var array = [];
+
+  while (iterator.hasNext()) {
+    array.push(iterator.next());
+  };
+
+  it("should have toString equal to string representation of list", function() {
+    expect(list.toString()).toBe(array.toString());
+  });
+});
+
+describe("eList - use iterate function of the iterator object to loop through the list (Automatic)", function() {
+  var list = new eList();
+  list.add(1);
+  list.add(2);
+  list.add(3);
+  // get iterator from list
+  var iterator = list.getIterator();
+  var array = [];
+
+  iterator.iterate(function(element, index) {
+    array.push(element);
+  });
+
+  it("should have toString equal to string representation of list", function() {
+    expect(list.toString()).toBe(array.toString());
   });
 });
