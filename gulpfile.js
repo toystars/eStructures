@@ -14,6 +14,12 @@ gulp.task('test', function (done) {
   }, done).start();
 });
 
+gulp.task('tdd', function (done) {
+  new Server({
+    configFile: __dirname + '/karma.conf.js',
+  }, done).start();
+});
+
 // Lint Task
 gulp.task('lint', function() {
   return gulp.src('src/*.js')
@@ -37,4 +43,4 @@ gulp.task('watch', function() {
 });
 
 // Default Task
-gulp.task('default', ['test', 'lint', 'scripts', 'watch']);
+gulp.task('default', ['tdd', 'lint', 'scripts', 'watch']);

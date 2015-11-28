@@ -26,15 +26,38 @@ var eList = function() {
   list.data = [];
 
   /**
-    * Adds an element to the list.
-    * @param {Object} item Element to be added.
-    * @param {Integer} index Optional index to add the element. If no index is specified
-    * the element is added to the end of the list.
-    * @return {boolean} True if the element was added or false if the index is invalid
-    * or if the element is undefined.
+    * Count property to be used to get quick number of elements in the list
     */
-  list.add = function(item, index) {
+  list.count = 0;
 
+  /**
+    * Adds an element to the list.
+    * @param {Integer} index - Optional index to add the element. If no index is specified
+    * the element is added to the end of the list.
+    * @param {Object} item - Element to be added (must always be present).
+    * @return {boolean} True if the element was added or false if error occurs
+    */
+  list.add = function(index, item) {
+    // if arguments.length === 0 || > 2, throw error
+    if (arguments.length === 0 || arguments.length > 2) {
+      return false;
+    }
+
+    // if arguments.length === 1, treat as element to be inserted and insert as last element of list
+    if (arguments.length === 1) {
+      list.data.push(arguments[0]);
+      return true;
+    }
+
+    // if arguments.length === 2, treat first as index and second as item
+    if (arguments.length === 2) {
+      // insert item into the specified index
+
+    }
+
+
+    
+    return true;
   };
 
   return list;

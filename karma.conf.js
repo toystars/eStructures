@@ -7,8 +7,7 @@ module.exports = function(config) {
     files: [
       'src/list.js',
       'src/linkedlist.js',
-      'src/list-test.jss',
-      'tests/linkedlist-test.js'
+      'tests/*.js'
     ]
   });
 };
