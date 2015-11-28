@@ -12,6 +12,7 @@
 
 var eList = function() {
 
+
   /**
     * Define all utility functions here...
     */
@@ -20,6 +21,14 @@ var eList = function() {
       return false;
     }
   };
+
+  var isValidIndex = function(number) {
+    if ((typeof number !== 'number') || (number % 1 !== 0) || (number < 0)) {
+      return false;
+    }
+    return true;
+  };
+
 
   // object containing all properties and functions of the list
   var list = {};
@@ -71,7 +80,7 @@ var eList = function() {
     // if arguments.length === 2, treat first as index and second as item
     if (arguments.length === 2) {
       // check if specified index is a number
-      if ((typeof index !== 'number') || (index % 1 !== 0) || (index < 0)) {
+      if (isValidIndex(index) === false) {
         return -1;
       }
 
@@ -116,7 +125,7 @@ var eList = function() {
     // if arguments.length === 2, treat first as index and second as item
     if (arguments.length === 2) {
       // check if specified index is a number
-      if ((typeof index !== 'number') || (index % 1 !== 0) || (index < 0)) {
+      if (isValidIndex(index) === false) {
         return -1;
       }
 
@@ -141,6 +150,31 @@ var eList = function() {
       }
     }
     return -1;
+  };
+
+  /**
+    * Replace the element in specified index with povided element
+    * @param {Integer} index - index to of element to be replaced
+    * @param {Object} item - new element to be placed in specified index
+    * @return {boolean} true if element is replaced successfully, false if error occurs
+    */
+  list.set = function(index, item) {
+    // if arguments.length === 0 || > 2, throw error
+    if (arguments.length < 2 || arguments.length > 2) {
+      return -1;
+    }
+
+    if (isValidIndex(index) === false) {
+      return -1;
+    }
+
+    if (index > list.size() - 1) {
+      return -1;
+    }
+
+    // perform replacement
+    list.data[index] = item;
+    return list.data[index];
   };
 
   /**
