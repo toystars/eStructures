@@ -230,3 +230,63 @@ describe("eList - use iterate function of the iterator object to loop through th
     expect(list.toString()).toBe(array.toString());
   });
 });
+
+describe("eList - replace element in given index", function() {
+  var list = new eList();
+  list.add(1);
+  list.add(2);
+  list.add(3);
+
+  it("should return -1 for empty parameters", function() {
+    expect(list.set()).toBe(-1);
+  });
+
+  it("should return -1 for 1 parameter", function() {
+    expect(list.set(4)).toBe(-1);
+  });
+
+  it("should return -1 for more than 2 parameters", function() {
+    expect(list.set(3, 7, {name: "eList"})).toBe(-1);
+  });
+
+  it("should return -1 when non integer is specified as index", function() {
+    expect(list.set("eList", 100)).toBe(-1);
+  });
+
+  it("should return -1 for index greater than maximum list index", function() {
+    expect(list.set(4, 17)).toBe(-1);
+  });
+
+  it("should return set value for successful element replacement", function() {
+    expect(list.set(1, 17)).toBe(17);
+  });
+
+});
+
+describe("eList - remove element in given index", function() {
+  var list = new eList();
+  list.add(1);
+  list.add(2);
+  list.add(3);
+
+  it("should return -1 for empty parameters", function() {
+    expect(list.remove()).toBe(-1);
+  });
+
+  it("should return -1 for more than 1 parameters", function() {
+    expect(list.remove(3, 7, {name: "eList"})).toBe(-1);
+  });
+
+  it("should return -1 when non integer is specified as index", function() {
+    expect(list.remove("eList")).toBe(-1);
+  });
+
+  it("should return -1 for index greater than maximum list index", function() {
+    expect(list.remove(4)).toBe(-1);
+  });
+
+  it("should return set value for successful element replacement", function() {
+    expect(list.remove(1).toString()).toBe("2");
+  });
+
+});
