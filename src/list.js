@@ -216,12 +216,20 @@ var eList = function() {
   };
 
   /**
-    * Property to be used to loop through list elements
+    * ForEach function to loop through eList elements
+    * @param {Function} callBack - callBack function to be provided on each element
     */
-  list.iterator = {
+  list.forEach = function(callBack) {
+    list.getIterator().iterate(callBack);
+  };
+
+  /**
+    * Private iterator property to be used to loop through list elements
+    */
+  var iterator = {
     currentPosition: 0,
     next: function() {
-      var item = list.get(list.iterator.currentPosition);
+      var item = list.get(list.getIterator().currentPosition);
       this.currentPosition += 1;
       return item;
     },
@@ -229,9 +237,10 @@ var eList = function() {
       return this.currentPosition < list.size();
     },
     iterate: function(callBack) {
-      while (list.iterator.hasNext()) {
-        callBack(list.iterator.next(), list.iterator.currentPosition);
+      while (list.getIterator().hasNext()) {
+        callBack(list.getIterator().next(), list.getIterator().currentPosition);
       }
+      list.getIterator().currentPosition = 0;
     }
   };
 
@@ -241,7 +250,7 @@ var eList = function() {
     * to be used to easily loop through all list elements
     */
   list.getIterator = function() {
-    return list.iterator;
+    return iterator;
   };
 
   return list;
