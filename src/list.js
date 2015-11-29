@@ -240,6 +240,9 @@ var eList = function() {
       while (list.getIterator().hasNext()) {
         callBack(list.getIterator().next(), list.getIterator().currentPosition);
       }
+      list.getIterator().reset();
+    },
+    reset: function() {
       list.getIterator().currentPosition = 0;
     }
   };
