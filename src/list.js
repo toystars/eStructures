@@ -157,15 +157,7 @@ var eList = function() {
     */
   list.set = function(index, item) {
     // if arguments.length === 0 || > 2, throw error
-    if (arguments.length < 2 || arguments.length > 2) {
-      return -1;
-    }
-
-    if (isValidIndex(index) === false) {
-      return -1;
-    }
-
-    if (index > list.size() - 1) {
+    if (arguments.length < 2 || arguments.length > 2 || isValidIndex(index) === false || index > list.size() - 1) {
       return -1;
     }
 
@@ -180,10 +172,33 @@ var eList = function() {
     * @return {Object} Object at index if found, -1 if error occur
     */
   list.get = function(index) {
-    if (index === undefined || index < 0 || list.size() === 0 || index >= list.size()) {
+    // validate argument provided
+    if (index === undefined || index < 0 || list.size() === 0 || arguments.length > 1 || index >= list.size()) {
       return -1;
     }
+
+    if (isValidIndex(index) === false) {
+      return -1;
+    } 
+    
     return list.data[index];
+  };
+
+  /**
+    * Delete element in specified index
+    * @return {Object} Array containing removed element
+    */
+  list.remove = function(index) {
+    // validate argument provided
+    if (index === undefined || index < 0 || list.size() === 0 || arguments.length > 1 || index >= list.size()) {
+      return -1;
+    }
+
+    if (isValidIndex(index) === false) {
+      return -1;
+    }
+
+    return list.data.splice(index, 1);
   };
 
   /**
@@ -221,6 +236,7 @@ var eList = function() {
   };
 
   /**
+    * Get iterator object
     * @return {Object} Iterator containing useful functions
     * to be used to easily loop through all list elements
     */
