@@ -4,6 +4,21 @@ Contributions are **welcome** and will be fully **credited**.
 
 We accept contributions via Pull Requests on [Github](https://github.com/toystars/eStructures).
 
+## Setting up environment
+
+Clone the repository and `cd` to project directory
+
+Install all npm dependencies
+
+```bash
+$ npm install
+```
+
+Run gulp to watch on file changes (Including test files)
+```bash
+$ gulp
+```
+
 
 ## Pull Requests
 
