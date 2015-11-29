@@ -47,15 +47,15 @@ var eList = function() {
   };
 
   /**
-    * Array property to hold all elements added to the list
+    * Private array property to hold all elements added to the list
     */
-  list.data = [];
+  var data = [];
 
   /**
     * Count property to be used to get quick number of elements in the list
     */
   list.size = function() {
-    return list.data.length;
+    return data.length;
   };
 
   /**
@@ -73,7 +73,7 @@ var eList = function() {
 
     // if arguments.length === 1, treat as element to be inserted and insert as last element of list
     if (arguments.length === 1) {
-      list.data.push(arguments[0]);
+      data.push(arguments[0]);
       return list.size();
     }
 
@@ -85,13 +85,13 @@ var eList = function() {
       }
 
       // all checks passed, insert into list
-      if (list.data.length - 1 < index) {
+      if (data.length - 1 < index) {
         // push into array
-        list.data.push(item);
+        data.push(item);
         return list.size();
-      } else if (index < list.data.length - 1) {
+      } else if (index < data.length - 1) {
         // splice array and insert item
-        list.data.splice(index, 0, item);
+        data.splice(index, 0, item);
         return list.size();
       }
     }
@@ -118,7 +118,7 @@ var eList = function() {
         return null;
       }
 
-      list.data = list.data.concat(arguments[0].toArray());
+      data = data.concat(arguments[0].toArray());
       return list.size();
     }
 
@@ -135,15 +135,15 @@ var eList = function() {
       }
 
       // all checks passed, insert into list
-      if (list.data.length - 1 < index) {
+      if (data.length - 1 < index) {
         // append new eList to current
-        list.data = list.data.concat(eList.toArray());
+        data = data.concat(eList.toArray());
         return list.size();
-      } else if (index < list.data.length - 1) {
+      } else if (index < data.length - 1) {
         // go through array and splice at incrementing index
         var currentIndex = index;
         for (var x = 0; x < eList.size(); x++) {
-          list.data.splice(currentIndex, 0, eList.get(x));
+          data.splice(currentIndex, 0, eList.get(x));
           currentIndex++
         }
         return list.size();
@@ -165,8 +165,8 @@ var eList = function() {
     }
 
     // perform replacement
-    list.data[index] = item;
-    return list.data[index];
+    data[index] = item;
+    return data[index];
   };
 
   /**
@@ -184,7 +184,7 @@ var eList = function() {
       return -1;
     } 
     
-    return list.data[index];
+    return data[index];
   };
 
   /**
@@ -201,30 +201,38 @@ var eList = function() {
       return -1;
     }
 
-    return list.data.splice(index, 1);
+    return data.splice(index, 1);
   };
 
   /**
     * @return {Array} Array containing all eList elements or empty array if eList is empty
     */
   list.toArray = function() {
-    return list.data;
+    return data;
   };
 
   /**
     * @return {String} String containing all eList elements or empty string if eList is empty
     */
   list.toString = function() {
-    return list.data.toString();
+    return data.toString();
   };
 
   /**
-    * Property to be used to loop through list elements
+    * ForEach function to loop through eList elements
+    * @param {Function} callBack - callBack function to be provided on each element
     */
-  list.iterator = {
+  list.forEach = function(callBack) {
+    list.getIterator().iterate(callBack);
+  };
+
+  /**
+    * Private iterator property to be used to loop through list elements
+    */
+  var iterator = {
     currentPosition: 0,
     next: function() {
-      var item = list.get(list.iterator.currentPosition);
+      var item = list.get(list.getIterator().currentPosition);
       this.currentPosition += 1;
       return item;
     },
@@ -232,9 +240,10 @@ var eList = function() {
       return this.currentPosition < list.size();
     },
     iterate: function(callBack) {
-      while (list.iterator.hasNext()) {
-        callBack(list.iterator.next(), list.iterator.currentPosition);
+      while (list.getIterator().hasNext()) {
+        callBack(list.getIterator().next(), list.getIterator().currentPosition);
       }
+      list.getIterator().currentPosition = 0;
     }
   };
 
@@ -244,7 +253,7 @@ var eList = function() {
     * to be used to easily loop through all list elements
     */
   list.getIterator = function() {
-    return list.iterator;
+    return iterator;
   };
 
   return list;

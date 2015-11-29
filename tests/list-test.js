@@ -142,6 +142,22 @@ describe("eList - add another eList object to current eList at specified index",
   });
 });
 
+describe("eList - use forEach function to loop through the list (Automatic)", function() {
+  var list = new eList();
+  list.add(1);
+  list.add(2);
+  list.add(3);
+  var array = [];
+
+  list.forEach(function(element, index) {
+    array.push(element);
+  });
+
+  it("should have toString equal to string representation of list", function() {
+    expect(list.toString()).toBe(array.toString());
+  });
+});
+
 describe("eList - use iterator object to loop through the list (Manual)", function() {
   var list = new eList();
   list.add(1);
