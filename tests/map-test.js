@@ -118,5 +118,15 @@ describe("eMap - get element associated with specified key", function() {
   });
 });
 
+describe("eMap - convert map to eList", function() {
+  it("should return eList equivallent of eMap", function() {
+    var map = new eMap();
+    map.put("name", "Babatunde");
+    map.put("age", 25);
+    var eList = map.values();
+    expect(eList.toArray().toString()).toBe("Babatunde,25");
+  });
+});
+
 
 

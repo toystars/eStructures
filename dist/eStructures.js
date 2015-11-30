@@ -380,6 +380,53 @@ var eMap = function() {
     return values[keys.indexOf(key.toLowerCase())];
   };
 
+  /**
+    * Returns eList equivallent of eMap
+    * @return {Object/undefined} eList
+    */
+  map.values = function() {
+    var list = new eList();
+    map.getIterator().iterate(function(key, value) {
+      list.add(value);
+    });
+    return list;
+  };
+
+  /**
+    * Private iterator property to be used to loop through map elements
+    */
+  var iterator = {
+    currentPosition: 0,
+    next: function() {
+      var key = keys[map.getIterator().currentPosition];
+      var value = values[map.getIterator().currentPosition];
+      map.getIterator().currentPosition += 1;
+      return [key, value];
+    },
+    hasNext: function() {
+      return map.getIterator().currentPosition < map.size();
+    },
+    iterate: function(callBack) {
+      while (map.getIterator().hasNext()) {
+        var keyValue = map.getIterator().next();
+        callBack(keyValue[0], keyValue[1]);
+      }
+      map.getIterator().reset();
+    },
+    reset: function() {
+      map.getIterator().currentPosition = 0;
+    }
+  };
+
+  /**
+    * Get iterator object
+    * @return {Object} Iterator containing useful functions
+    * to be used to easily loop through all map elements and 
+    */
+  map.getIterator = function() {
+    return iterator;
+  };
+
 
   return map;
 };
