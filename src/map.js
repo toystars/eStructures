@@ -7,5 +7,84 @@
   */
 
 var eMap = function() {
-  
-}
+
+  // utility functions
+  var sanitizeArguments = function(arguments) {
+    // check for argument length
+    if (arguments.length < 2 || arguments.length > 2) {
+      return false;
+    }
+    // check for type of first argument
+    if (typeof arguments[0] !== 'string') {
+      return false;
+    }
+    return true;
+  };
+
+  var validateKeysToValues = function() {
+    return keys.length === values.length;
+  };
+
+
+  // Private arrays to hold keys and values
+  var keys = [];
+  var values = [];
+
+  // object containing all properties and functions of the map
+  var map = {};
+
+  /**
+    * Function to get type of eStructure object
+    */
+  map.getType = function() {
+    return 'eMap';
+  };
+
+  /**
+    * Function to get size of eMap
+    * @return {Integer} Non-negeative integer if the element was added or -1 if error occurs
+    */
+  map.size = function() {
+    if (validateKeysToValues()) {
+      return values.length;
+    }
+    return -1;
+  };
+
+  /**
+    * Function to check if map is empty or not
+    * @return {Boolean/Integer} true if map is empty, false if otherwise, -1 if error occurs
+    */
+  map.isEmpty = function() {
+    if (validateKeysToValues()) {
+      return values.length === 0;
+    }
+    return -1;
+  };
+
+  /**
+    * Adds a key-value pair to map.
+    * @param {String} key - Key to be used to store and retrieve value
+    * @param {Object} value - Value to be stored with key
+    * @return {Integer} Non-negeative integer if the element was added or -1 if error occurs
+    */
+  map.put = function(key, value) {
+    // sanitize arguments
+    if (!sanitizeArguments(arguments)) {
+      return -1;
+    }
+
+    // check if keys and values arrays are in sync
+    if (!validateKeysToValues()) {
+      return -1;
+    }
+
+    // add key and value to map
+    keys.push(key);
+    values.push(value);
+
+    return map.size();
+  };
+
+  return map;
+};

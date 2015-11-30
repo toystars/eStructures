@@ -49,7 +49,7 @@ var eList = function() {
   var data = [];
 
   /**
-    * Count property to be used to get quick number of elements in the list
+    * Function to get size of eList
     */
   list.size = function() {
     return data.length;
