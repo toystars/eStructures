@@ -6,7 +6,7 @@ module.exports = function(config) {
     browsers: ['PhantomJS'],
     files: [
       'src/list.js',
-      'src/linkedlist.js',
+      'src/map.js',
       'tests/*.js'
     ]
   });

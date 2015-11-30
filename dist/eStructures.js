@@ -1,6 +1,3 @@
-/*
-  * linkedlist data structure implementation
-*/
 /**
   * Creates an empty List.
   * @class A List is a data structure that declares the behavior of a collection 
@@ -260,3 +257,15 @@ var eList = function() {
 
   return list;
 };
+
+/**
+  * Creates an empty Map.
+  * @class A map is a data structure that maps keys to values
+  * They are also known as key-value pair in which a value is set
+  * and retrieved with a key
+  * @constructor
+  */
+
+var eMap = function() {
+  
+}

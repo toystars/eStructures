@@ -1,3 +1,0 @@
-/*
-  * linkedlist data structure implementation
-*/
