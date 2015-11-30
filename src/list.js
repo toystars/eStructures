@@ -14,7 +14,13 @@ var eList = function() {
     * Define all utility functions here...
     */
   var isObjectOf = function(object) {
-    if (typeof object !== 'object' || !object.hasOwnProperty('eList')) {
+    if (typeof object !== 'object') {
+      return false;
+    }
+    if (!object.hasOwnProperty('getType')) {
+      return false;
+    }
+    if (object.getType() !== 'eList') {
       return false;
     }
   };
@@ -31,16 +37,10 @@ var eList = function() {
   var list = {};
 
   /**
-    * Property to show that object is a list
-    * To be used in inner functions
+    * Function to get type of eStructure object
     */
-  list.eList = true;
-
-  /**
-    * Function to get list status of object
-    */
-  list.isList = function() {
-    return list.eList;
+  list.getType = function() {
+    return 'eList';
   };
 
   /**
@@ -138,11 +138,10 @@ var eList = function() {
         return list.size();
       } else if (index < data.length - 1) {
         // go through array and splice at incrementing index
-        var currentIndex = index;
-        for (var x = 0; x < eList.size(); x++) {
-          data.splice(currentIndex, 0, eList.get(x));
-          currentIndex++
-        }
+        eList.getIterator().iterate(function(item, currentPosition) {
+          data.splice(index, 0, item);
+          index++
+        });
         return list.size();
       }
     }

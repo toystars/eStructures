@@ -6,9 +6,9 @@
   */
 
 describe("eList - isList query", function() {
-  it("should return true when called", function() {
+  it("should return type of eList", function() {
     var list = new eList();
-    expect(list.isList()).toBe(true);
+    expect(list.getType()).toBe('eList');
   });
 });
 
