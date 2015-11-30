@@ -323,24 +323,35 @@ var eMap = function() {
   };
 
   /**
-    * Adds a key-value pair to map.
+    * Function to check if map contains key
+    * @param {String} key - Key to check
+    * @return {Boolean/Integer} true is key is in map, false if otherwise or -1 if error occurs
+    */
+  map.containsKey = function(key) {
+    if (!key) {
+      return -1;
+    }
+
+    if (keys.indexOf(key.toLowerCase()) !== -1) {
+      return true;
+    }
+    return false;
+  };
+
+  /**
+    * Adds a key-value pair to map (converts key to lowercase).
     * @param {String} key - Key to be used to store and retrieve value
     * @param {Object} value - Value to be stored with key
     * @return {Integer} Non-negeative integer if the element was added or -1 if error occurs
     */
   map.put = function(key, value) {
-    // sanitize arguments
-    if (!sanitizeArguments(arguments)) {
-      return -1;
-    }
-
-    // check if keys and values arrays are in sync
-    if (!validateKeysToValues()) {
+    // validate
+    if (!sanitizeArguments(arguments) || map.containsKey(key) || !validateKeysToValues()) {
       return -1;
     }
 
     // add key and value to map
-    keys.push(key);
+    keys.push(key.toLowerCase());
     values.push(value);
 
     return map.size();

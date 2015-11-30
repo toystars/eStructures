@@ -64,5 +64,14 @@ describe("eMap - check if map is empty", function() {
   });
 });
 
+describe("eMap - check if map contains specified key", function() {
+  it("should return containsKey status of map", function() {
+    var map = new eMap();
+    map.put("name", "Babatunde");
+    map.put("age", 25);
+    expect(map.containsKey("name")).toBe(true);
+  });
+});
+
 
 
