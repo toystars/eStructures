@@ -323,6 +323,16 @@ var eMap = function() {
   };
 
   /**
+    * Function clear map
+    * @return {Integer} 0 if map successfully cleared
+    */
+  map.clear = function() {
+    keys = [];
+    values = [];
+    return map.size();
+  };
+
+  /**
     * Function to check if map contains key
     * @param {String} key - Key to check
     * @return {Boolean/Integer} true is key is in map, false if otherwise or -1 if error occurs
@@ -356,6 +366,20 @@ var eMap = function() {
 
     return map.size();
   };
+
+  /**
+    * Gets value associated with key (converts key to lowercase).
+    * @param {String} key - Key to be used to retrieve value
+    * @return {Object/undefined} element or undefined if key is not in map
+    */
+  map.get = function(key) {
+    if (!key || !map.containsKey(key)) {
+      return undefined;
+    }
+    // fetch value
+    return values[keys.indexOf(key.toLowerCase())];
+  };
+
 
   return map;
 };

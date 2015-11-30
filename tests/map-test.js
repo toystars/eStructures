@@ -73,5 +73,50 @@ describe("eMap - check if map contains specified key", function() {
   });
 });
 
+describe("eMap - clear map", function() {
+  it("should return 0 when map is successfully cleared", function() {
+    var map = new eMap();
+    map.put("name", "Babatunde");
+    map.put("age", 25);
+    expect(map.clear()).toBe(0);
+  });
+});
+
+describe("eMap - get element associated with specified key", function() {
+  it("should return element associated with specified key", function() {
+    var map = new eMap();
+    map.put("name", "Babatunde");
+    map.put("age", 25);
+    expect(map.get("name")).toBe("Babatunde");
+  });
+});
+
+describe("eMap - get element associated with specified key", function() {
+  it("should return element associated with specified key", function() {
+    var map = new eMap();
+    map.put("name", "Babatunde");
+    map.put("age", 25);
+    expect(map.get("age")).toBe(25);
+  });
+});
+
+describe("eMap - get element associated with specified key", function() {
+  it("should return element associated with specified key", function() {
+    var map = new eMap();
+    map.put("name", "Babatunde");
+    map.put("age", 25);
+    expect(map.get("status")).toBe(undefined);
+  });
+});
+
+describe("eMap - get element associated with specified key", function() {
+  it("should return element associated with specified key", function() {
+    var map = new eMap();
+    map.put("name", "Babatunde");
+    map.put("age", 25);
+    expect(map.get()).toBe(undefined);
+  });
+});
+
 
 
