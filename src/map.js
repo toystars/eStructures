@@ -11,7 +11,7 @@ var eMap = function() {
   // utility functions
   var sanitizeArguments = function(arguments) {
     // check for argument length
-    if (arguments.length < 2 || arguments.length > 2) {
+    if (arguments.length != 2) {
       return false;
     }
     // check for type of first argument
