@@ -23,10 +23,11 @@ var eList = function() {
     if (object.getType() !== 'eList') {
       return false;
     }
+    return true;
   };
 
   var isValidIndex = function(number) {
-    if ((typeof number !== 'number') || (number % 1 !== 0) || (number < 0)) {
+    if ((typeof number !== 'number') || (number % 1 !== 0) || (number < 0) || number === undefined) {
       return false;
     }
     return true;
@@ -63,10 +64,7 @@ var eList = function() {
     * @return {Integer} Non-negeative integer if the element was added or -1 if error occurs
     */
   list.add = function(index, item) {
-    // if arguments.length === 0 || > 2, throw error
-    if (arguments.length === 0 || arguments.length > 2) {
-      return -1;
-    }
+   
 
     // if arguments.length === 1, treat as element to be inserted and insert as last element of list
     if (arguments.length === 1) {
@@ -77,7 +75,7 @@ var eList = function() {
     // if arguments.length === 2, treat first as index and second as item
     if (arguments.length === 2) {
       // check if specified index is a number
-      if (isValidIndex(index) === false) {
+      if (!isValidIndex(index)) {
         return -1;
       }
 
@@ -103,15 +101,12 @@ var eList = function() {
     * @return {Integer} Non-negeative integer if the eList was added or -1 if error occurs
     */
   list.addAll = function(index, eList) {
-    // if arguments.length === 0 || > 2, throw error
-    if (arguments.length === 0 || arguments.length > 2) {
-      return -1;
-    }
+    
 
     // if arguments.length === 1, treat as eList to be inflated and insert as last element of list
     if (arguments.length === 1) {
       // check if argument is an eList
-      if (isObjectOf(arguments[0]) === false) {
+      if (!isObjectOf(arguments[0])) {
         return null;
       }
 
@@ -122,12 +117,12 @@ var eList = function() {
     // if arguments.length === 2, treat first as index and second as item
     if (arguments.length === 2) {
       // check if specified index is a number
-      if (isValidIndex(index) === false) {
+      if (!isValidIndex(index)) {
         return -1;
       }
 
       // check if argument is an eList
-      if (isObjectOf(eList) === false) {
+      if (!isObjectOf(eList)) {
         return null;
       }
 
@@ -155,8 +150,8 @@ var eList = function() {
     * @return {boolean} true if element is replaced successfully, false if error occurs
     */
   list.set = function(index, item) {
-    // if arguments.length === 0 || > 2, throw error
-    if (arguments.length < 2 || arguments.length > 2 || isValidIndex(index) === false || index > list.size() - 1) {
+    // if arguments.length not equals 2, throw error
+    if (arguments.length != 2 || !isValidIndex(index) || index > list.size() - 1) {
       return -1;
     }
 
@@ -172,11 +167,11 @@ var eList = function() {
     */
   list.get = function(index) {
     // validate argument provided
-    if (index === undefined || index < 0 || list.size() === 0 || arguments.length > 1 || index >= list.size()) {
+    if (list.size() === 0 || arguments.length > 1 || index >= list.size()) {
       return -1;
     }
 
-    if (isValidIndex(index) === false) {
+    if (!isValidIndex(index)) {
       return -1;
     } 
     
@@ -189,11 +184,11 @@ var eList = function() {
     */
   list.remove = function(index) {
     // validate argument provided
-    if (index === undefined || index < 0 || list.size() === 0 || arguments.length > 1 || index >= list.size()) {
+    if (list.size() === 0 || arguments.length > 1 || index >= list.size()) {
       return -1;
     }
 
-    if (isValidIndex(index) === false) {
+    if (!isValidIndex(index)) {
       return -1;
     }
 
