@@ -4,7 +4,8 @@ Extended data structures for JavaScript.
 
 ## Available data structures
 
-* List
+* [List](https://github.com/toystars/eStructures/blob/master/src/list.js)
+* [Map](https://github.com/toystars/eStructures/blob/master/src/map.js)
 
 ## Usage
 ### * List
