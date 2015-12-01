@@ -5,18 +5,13 @@ var jshint = require('gulp-jshint');
 var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
 var rename = require('gulp-rename');
+var isTravis = process.env.TRAVIS || false;
 
-
-gulp.task('test', function (done) {
-  return new Server({
-    configFile: __dirname + '/karma.conf.js',
-    singleRun: true
-  }, done).start();
-});
 
 gulp.task('tdd', function (done) {
   new Server({
     configFile: __dirname + '/karma.conf.js',
+    singleRun: isTravis
   }, done).start();
 });
 
