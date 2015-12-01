@@ -128,5 +128,24 @@ describe("eMap - convert map to eList", function() {
   });
 });
 
+describe("eMap - test eMap iterator", function() {
+  it("should loop through eMap key-value pairs", function() {
+    var map = new eMap();
+    map.put("name", "Babatunde");
+    map.put("age", 25);
+    map.put("occupation", "Software Developer");
+    var keys = [];
+    map.getIterator().iterate(function(key, value) {
+      keys.push(key);
+    });
+    expect(keys.indexOf("name")).toBe(0);
+    expect(keys.indexOf("age")).toBe(1);
+    expect(keys.indexOf("occupation")).toBe(2);
+  });
+});
+
+
+
+
 
 
