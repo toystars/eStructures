@@ -1,4 +1,4 @@
-# eStructures  [![Build Status](https://travis-ci.org/toystars/eStructures.svg?branch=eMap)](https://travis-ci.org/toystars/eStructures)
+# eStructures  [![Build Status](https://travis-ci.org/toystars/eStructures.svg?branch=master)](https://travis-ci.org/toystars/eStructures)
 
 Extended data structures for JavaScript.
 
