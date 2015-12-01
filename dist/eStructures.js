@@ -381,6 +381,21 @@ var eMap = function() {
   };
 
   /**
+    * Delete key-value pair from eMap (converts key to lowercase).
+    * @param {String} key - Key associated with value to be deleted
+    * @return {Integer/undefined} new size of eMap or undefined if key is not in map
+    */
+  map.remove = function(key) {
+    if (!key || !map.containsKey(key)) {
+      return undefined;
+    }
+    var index = keys.indexOf(key);
+    keys.splice(index, 1);
+    values.splice(index, 1);
+    return map.size();
+  };
+
+  /**
     * Returns eList equivallent of eMap
     * @return {Object/undefined} eList
     */
