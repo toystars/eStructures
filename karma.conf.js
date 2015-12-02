@@ -5,7 +5,7 @@ module.exports = function(config) {
     reporters: ['spec'],
     browsers: ['PhantomJS'],
     files: [
-      'src/*.js',
+      'src/**/*.js',
       'tests/*.js'
     ]
   });
