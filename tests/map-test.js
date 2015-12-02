@@ -173,3 +173,18 @@ describe("eMap - get eMap key set", function() {
   });
 });
 
+describe("eMap - join two eMaps into one", function() {
+  it("should return the new size of joined eMap", function() {
+    var map = new eMap();
+    map.put("name", "Babatunde");
+    map.put("age", 25);
+    map.put("school", "UI");
+    map.put("origin", {country: "Nigeria", state: "Lagos", city: "Ipaja"});
+    var secondMap = new eMap();
+    secondMap.put("name", "Babatunde");
+    secondMap.put("age", 25);
+    secondMap.put("school", "UI");
+    // expect(map.addAll(secondMap)).toBe(-1);
+  });
+});
+

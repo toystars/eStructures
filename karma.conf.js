@@ -5,8 +5,7 @@ module.exports = function(config) {
     reporters: ['spec'],
     browsers: ['PhantomJS'],
     files: [
-      'src/list.js',
-      'src/map.js',
+      'src/**/*.js',
       'tests/*.js'
     ]
   });

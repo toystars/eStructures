@@ -17,14 +17,14 @@ gulp.task('tdd', function (done) {
 
 // Lint Task
 gulp.task('lint', function() {
-  return gulp.src('src/*.js')
+  return gulp.src('src/**/*.js')
     .pipe(jshint())
     .pipe(jshint.reporter('default'));
 });
 
 // Concatenate & Minify JS
 gulp.task('scripts', function() {
-  return gulp.src('src/*.js')
+  return gulp.src('src/**/*.js')
     .pipe(concat('eStructures.js'))
     .pipe(gulp.dest('dist'))
     .pipe(rename('eStructures.min.js'))
@@ -34,7 +34,7 @@ gulp.task('scripts', function() {
 
 // Watch Files For Changes
 gulp.task('watch', function() {
-  gulp.watch('src/*.js', ['lint', 'scripts']);
+  gulp.watch('src/**/*.js', ['lint', 'scripts']);
 });
 
 // Default Task
