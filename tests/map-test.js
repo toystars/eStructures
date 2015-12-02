@@ -60,7 +60,7 @@ describe("eMap - check if map is empty", function() {
     var map = new eMap();
     map.put("name", "Babatunde");
     map.put("age", 25);
-    expect(map.isEmpty()).toBe(false);
+    expect(map.isEmpty()).toBeFalsy();
   });
 });
 
@@ -69,7 +69,7 @@ describe("eMap - check if map contains specified key", function() {
     var map = new eMap();
     map.put("name", "Babatunde");
     map.put("age", 25);
-    expect(map.containsKey("name")).toBe(true);
+    expect(map.containsKey("name")).toBeTruthy();
   });
 });
 
@@ -105,7 +105,7 @@ describe("eMap - get element associated with specified key", function() {
     var map = new eMap();
     map.put("name", "Babatunde");
     map.put("age", 25);
-    expect(map.get("status")).toBe(undefined);
+    expect(map.get("status")).toBeUndefined();
   });
 });
 
@@ -114,7 +114,7 @@ describe("eMap - get element associated with specified key", function() {
     var map = new eMap();
     map.put("name", "Babatunde");
     map.put("age", 25);
-    expect(map.get()).toBe(undefined);
+    expect(map.get()).toBeUndefined();
   });
 });
 
@@ -124,7 +124,7 @@ describe("eMap - convert map to eList", function() {
     map.put("name", "Babatunde");
     map.put("age", 25);
     var eList = map.values();
-    expect(eList.toArray().toString()).toBe("Babatunde,25");
+    expect(eList.toArray()).toEqual(["Babatunde", 25]);
   });
 });
 
@@ -149,7 +149,7 @@ describe("eMap - remove key-value pair from eMap", function() {
     var map = new eMap();
     map.put("name", "Babatunde");
     map.put("age", 25);
-    expect(map.remove("school")).toBe(undefined);
+    expect(map.remove("school")).toBeUndefined();
   });
 });
 
@@ -162,5 +162,14 @@ describe("eMap - remove key-value pair from eMap", function() {
   });
 });
 
-
+describe("eMap - get eMap key set", function() {
+  it("should return array representation of eMap keys", function() {
+    var map = new eMap();
+    map.put("name", "Babatunde");
+    map.put("age", 25);
+    map.put("school", "UI");
+    map.put("origin", {country: "Nigeria", state: "Lagos", city: "Ipaja"});
+    expect(map.getKeySet()).toEqual(['name', 'age', 'school', 'origin']);
+  });
+});
 
