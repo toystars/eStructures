@@ -121,6 +121,14 @@ var eMap = function() {
   };
 
   /**
+    * Gets all keys in eMap as an array of strings
+    * @return {Object} array of all keys
+    */
+  map.getKeySet = function(key) {
+    return keys;
+  };
+
+  /**
     * Delete key-value pair from eMap (converts key to lowercase).
     * @param {String} key - Key associated with value to be deleted
     * @return {Integer/undefined} new size of eMap or undefined if key is not in map
