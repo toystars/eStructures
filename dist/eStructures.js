@@ -256,7 +256,12 @@ var eList = function() {
   };
 
   return list;
+  
 };
+
+if (typeof module !== 'undefined' && module !== null && module.exports) {
+  module.exports = eList;
+}
 
 /**
   * Creates an empty Map.
@@ -529,4 +534,6 @@ var eQueue = function () {
 
 };
 
-if (typeof module !== 'undefined' && module !== null && module.exports)
+if (typeof module !== 'undefined' && module !== null && module.exports) {
+  module.exports = eQueue;
+}

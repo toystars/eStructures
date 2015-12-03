@@ -256,4 +256,9 @@ var eList = function() {
   };
 
   return list;
+  
 };
+
+if (typeof module !== 'undefined' && module !== null && module.exports) {
+  module.exports = eList;
+}
