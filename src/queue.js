@@ -96,3 +96,7 @@ var eQueue = function () {
   return queue;
 
 };
+
+if (typeof module !== 'undefined' && module !== null && module.exports) {
+  module.exports = eQueue;
+}

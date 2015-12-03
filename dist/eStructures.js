@@ -9,6 +9,7 @@
 
 var eList = function() {
 
+
   /**
     * Define all utility functions here...
     */
@@ -527,3 +528,5 @@ var eQueue = function () {
   return queue;
 
 };
+
+if (typeof module !== 'undefined' && module !== null && module.exports)
