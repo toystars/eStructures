@@ -271,10 +271,10 @@ if (typeof module !== 'undefined' && module !== null && module.exports) {
   * @constructor
   */
 
-var eMap = function() {
+var eMap = function () {
 
   // utility functions
-  var sanitizeArguments = function(arguments) {
+  var sanitizeArguments = function (arguments) {
     // check for argument length
     if (arguments.length < 2 || arguments.length > 2) {
       return false;
@@ -286,7 +286,7 @@ var eMap = function() {
     return true;
   };
 
-  var validateKeysToValues = function() {
+  var validateKeysToValues = function () {
     return keys.length === values.length;
   };
 
@@ -301,7 +301,7 @@ var eMap = function() {
   /**
     * Function to get type of eStructure object
     */
-  map.getType = function() {
+  map.getType = function () {
     return 'eMap';
   };
 
@@ -309,7 +309,7 @@ var eMap = function() {
     * Function to get size of eMap
     * @return {Integer} Non-negeative integer if the element was added or -1 if error occurs
     */
-  map.size = function() {
+  map.size = function () {
     if (validateKeysToValues()) {
       return values.length;
     }
@@ -320,7 +320,7 @@ var eMap = function() {
     * Function to check if map is empty or not
     * @return {Boolean/Integer} true if map is empty, false if otherwise, -1 if error occurs
     */
-  map.isEmpty = function() {
+  map.isEmpty = function () {
     if (validateKeysToValues()) {
       return values.length === 0;
     }
@@ -331,7 +331,7 @@ var eMap = function() {
     * Function clear map
     * @return {Integer} 0 if map successfully cleared
     */
-  map.clear = function() {
+  map.clear = function () {
     keys = [];
     values = [];
     return map.size();
@@ -342,7 +342,7 @@ var eMap = function() {
     * @param {String} key - Key to check
     * @return {Boolean/Integer} true is key is in map, false if otherwise or -1 if error occurs
     */
-  map.containsKey = function(key) {
+  map.containsKey = function (key) {
     if (!key) {
       return -1;
     }
@@ -359,7 +359,7 @@ var eMap = function() {
     * @param {Object} value - Value to be stored with key
     * @return {Integer} Non-negeative integer if the element was added or -1 if error occurs
     */
-  map.put = function(key, value) {
+  map.put = function (key, value) {
     // validate
     if (!sanitizeArguments(arguments) || map.containsKey(key) || !validateKeysToValues()) {
       return -1;
@@ -377,7 +377,7 @@ var eMap = function() {
     * @param {String} key - Key to be used to retrieve value
     * @return {Object/undefined} element or undefined if key is not in map
     */
-  map.get = function(key) {
+  map.get = function (key) {
     if (!key || !map.containsKey(key)) {
       return undefined;
     }
@@ -389,9 +389,9 @@ var eMap = function() {
     * Returns eList equivallent of eMap
     * @return {Object/undefined} eList
     */
-  map.values = function() {
+  map.values = function () {
     var list = new eList();
-    map.getIterator().iterate(function(key, value) {
+    map.getIterator().iterate(function (key, value) {
       list.add(value);
     });
     return list;
@@ -402,23 +402,23 @@ var eMap = function() {
     */
   var iterator = {
     currentPosition: 0,
-    next: function() {
+    next: function () {
       var key = keys[map.getIterator().currentPosition];
       var value = values[map.getIterator().currentPosition];
       map.getIterator().currentPosition += 1;
       return [key, value];
     },
-    hasNext: function() {
+    hasNext: function () {
       return map.getIterator().currentPosition < map.size();
     },
-    iterate: function(callBack) {
+    iterate: function (callBack) {
       while (map.getIterator().hasNext()) {
         var keyValue = map.getIterator().next();
         callBack(keyValue[0], keyValue[1]);
       }
       map.getIterator().reset();
     },
-    reset: function() {
+    reset: function () {
       map.getIterator().currentPosition = 0;
     }
   };
@@ -428,13 +428,17 @@ var eMap = function() {
     * @return {Object} Iterator containing useful functions
     * to be used to easily loop through all map elements and 
     */
-  map.getIterator = function() {
+  map.getIterator = function () {
     return iterator;
   };
 
-
   return map;
+
 };
+
+if (typeof module !== 'undefined' && module !== null && module.exports) {
+  module.exports = eMap;
+}
 /**
   * Creates an empty Queue.
   * @class A Queue is a data structure that declares the behavior of a collection 
