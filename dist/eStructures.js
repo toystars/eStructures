@@ -533,6 +533,16 @@ var eQueue = function () {
     data = [];
 
   };
+  
+  /**
+    * Returns the queue as an array
+    */
+  queue.toArray = function () {
+    
+    // Return the data array
+    return data;
+
+  };
 
   return queue;
 
