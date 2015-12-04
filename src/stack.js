@@ -1,7 +1,7 @@
 /**
   * Creates an empty stack.
   * @class A stack is a data structure that declares the behavior of a collection 
-  * that stores a sequence of elements according to the First In First Out rule.
+  * that stores a sequence of elements according to the Last In First Out rule.
   * The stack class can be used on its own, but it is defined as abstract as possible
   * that any class extending it can set rules about operations that can be perfomed on the collection
   * @constructor
