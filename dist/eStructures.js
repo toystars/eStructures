@@ -7,13 +7,13 @@
   * @constructor
   */
 
-var eList = function() {
+var eList = function () {
 
 
   /**
     * Define all utility functions here...
     */
-  var isObjectOf = function(object) {
+  var isObjectOf = function (object) {
     if (typeof object !== 'object') {
       return false;
     }
@@ -25,7 +25,7 @@ var eList = function() {
     }
   };
 
-  var isValidIndex = function(number) {
+  var isValidIndex = function (number) {
     if ((typeof number !== 'number') || (number % 1 !== 0) || (number < 0)) {
       return false;
     }
@@ -39,7 +39,7 @@ var eList = function() {
   /**
     * Function to get type of eStructure object
     */
-  list.getType = function() {
+  list.getType = function () {
     return 'eList';
   };
 
@@ -51,7 +51,7 @@ var eList = function() {
   /**
     * Function to get size of eList
     */
-  list.size = function() {
+  list.size = function () {
     return data.length;
   };
 
@@ -62,7 +62,7 @@ var eList = function() {
     * @param {Object} item - Element to be added (must always be present).
     * @return {Integer} Non-negeative integer if the element was added or -1 if error occurs
     */
-  list.add = function(index, item) {
+  list.add = function (index, item) {
     // if arguments.length === 0 || > 2, throw error
     if (arguments.length === 0 || arguments.length > 2) {
       return -1;
@@ -102,7 +102,7 @@ var eList = function() {
     * @param {Object} eList - List to be added (must always be present).
     * @return {Integer} Non-negeative integer if the eList was added or -1 if error occurs
     */
-  list.addAll = function(index, eList) {
+  list.addAll = function (index, eList) {
     // if arguments.length === 0 || > 2, throw error
     if (arguments.length === 0 || arguments.length > 2) {
       return -1;
@@ -138,7 +138,7 @@ var eList = function() {
         return list.size();
       } else if (index < data.length - 1) {
         // go through array and splice at incrementing index
-        eList.getIterator().iterate(function(item, currentPosition) {
+        eList.getIterator().iterate(function (item, currentPosition) {
           data.splice(index, 0, item);
           index++
         });
@@ -154,7 +154,7 @@ var eList = function() {
     * @param {Object} item - new element to be placed in specified index
     * @return {boolean} true if element is replaced successfully, false if error occurs
     */
-  list.set = function(index, item) {
+  list.set = function (index, item) {
     // if arguments.length === 0 || > 2, throw error
     if (arguments.length < 2 || arguments.length > 2 || isValidIndex(index) === false || index > list.size() - 1) {
       return -1;
@@ -170,7 +170,7 @@ var eList = function() {
     * @param {Integer} index - index of element to be retrieved
     * @return {Object} Object at index if found, -1 if error occur
     */
-  list.get = function(index) {
+  list.get = function (index) {
     // validate argument provided
     if (index === undefined || index < 0 || list.size() === 0 || arguments.length > 1 || index >= list.size()) {
       return -1;
@@ -178,8 +178,8 @@ var eList = function() {
 
     if (isValidIndex(index) === false) {
       return -1;
-    } 
-    
+    }
+
     return data[index];
   };
 
@@ -187,7 +187,7 @@ var eList = function() {
     * Delete element in specified index
     * @return {Object} Array containing removed element
     */
-  list.remove = function(index) {
+  list.remove = function (index) {
     // validate argument provided
     if (index === undefined || index < 0 || list.size() === 0 || arguments.length > 1 || index >= list.size()) {
       return -1;
@@ -203,14 +203,14 @@ var eList = function() {
   /**
     * @return {Array} Array containing all eList elements or empty array if eList is empty
     */
-  list.toArray = function() {
+  list.toArray = function () {
     return data;
   };
 
   /**
     * @return {String} String containing all eList elements or empty string if eList is empty
     */
-  list.toString = function() {
+  list.toString = function () {
     return data.toString();
   };
 
@@ -218,7 +218,7 @@ var eList = function() {
     * ForEach function to loop through eList elements
     * @param {Function} callBack - callBack function to be provided on each element
     */
-  list.forEach = function(callBack) {
+  list.forEach = function (callBack) {
     list.getIterator().iterate(callBack);
   };
 
@@ -227,21 +227,21 @@ var eList = function() {
     */
   var iterator = {
     currentPosition: 0,
-    next: function() {
+    next: function () {
       var item = list.get(list.getIterator().currentPosition);
       this.currentPosition += 1;
       return item;
     },
-    hasNext: function() {
+    hasNext: function () {
       return this.currentPosition < list.size();
     },
-    iterate: function(callBack) {
+    iterate: function (callBack) {
       while (list.getIterator().hasNext()) {
         callBack(list.getIterator().next(), list.getIterator().currentPosition);
       }
       list.getIterator().reset();
     },
-    reset: function() {
+    reset: function () {
       list.getIterator().currentPosition = 0;
     }
   };
@@ -251,12 +251,17 @@ var eList = function() {
     * @return {Object} Iterator containing useful functions
     * to be used to easily loop through all list elements
     */
-  list.getIterator = function() {
+  list.getIterator = function () {
     return iterator;
   };
 
   return list;
+
 };
+
+if (typeof module !== 'undefined' && module !== null && module.exports) {
+  module.exports = eList;
+}
 
 /**
   * Creates an empty Map.
@@ -266,10 +271,10 @@ var eList = function() {
   * @constructor
   */
 
-var eMap = function() {
+var eMap = function () {
 
   // utility functions
-  var sanitizeArguments = function(arguments) {
+  var sanitizeArguments = function (arguments) {
     // check for argument length
     if (arguments.length < 2 || arguments.length > 2) {
       return false;
@@ -281,7 +286,7 @@ var eMap = function() {
     return true;
   };
 
-  var validateKeysToValues = function() {
+  var validateKeysToValues = function () {
     return keys.length === values.length;
   };
 
@@ -296,7 +301,7 @@ var eMap = function() {
   /**
     * Function to get type of eStructure object
     */
-  map.getType = function() {
+  map.getType = function () {
     return 'eMap';
   };
 
@@ -304,7 +309,7 @@ var eMap = function() {
     * Function to get size of eMap
     * @return {Integer} Non-negeative integer if the element was added or -1 if error occurs
     */
-  map.size = function() {
+  map.size = function () {
     if (validateKeysToValues()) {
       return values.length;
     }
@@ -315,7 +320,7 @@ var eMap = function() {
     * Function to check if map is empty or not
     * @return {Boolean/Integer} true if map is empty, false if otherwise, -1 if error occurs
     */
-  map.isEmpty = function() {
+  map.isEmpty = function () {
     if (validateKeysToValues()) {
       return values.length === 0;
     }
@@ -326,7 +331,7 @@ var eMap = function() {
     * Function clear map
     * @return {Integer} 0 if map successfully cleared
     */
-  map.clear = function() {
+  map.clear = function () {
     keys = [];
     values = [];
     return map.size();
@@ -337,7 +342,7 @@ var eMap = function() {
     * @param {String} key - Key to check
     * @return {Boolean/Integer} true is key is in map, false if otherwise or -1 if error occurs
     */
-  map.containsKey = function(key) {
+  map.containsKey = function (key) {
     if (!key) {
       return -1;
     }
@@ -354,7 +359,7 @@ var eMap = function() {
     * @param {Object} value - Value to be stored with key
     * @return {Integer} Non-negeative integer if the element was added or -1 if error occurs
     */
-  map.put = function(key, value) {
+  map.put = function (key, value) {
     // validate
     if (!sanitizeArguments(arguments) || map.containsKey(key) || !validateKeysToValues()) {
       return -1;
@@ -372,7 +377,7 @@ var eMap = function() {
     * @param {String} key - Key to be used to retrieve value
     * @return {Object/undefined} element or undefined if key is not in map
     */
-  map.get = function(key) {
+  map.get = function (key) {
     if (!key || !map.containsKey(key)) {
       return undefined;
     }
@@ -399,9 +404,9 @@ var eMap = function() {
     * Returns eList equivallent of eMap
     * @return {Object/undefined} eList
     */
-  map.values = function() {
+  map.values = function () {
     var list = new eList();
-    map.getIterator().iterate(function(key, value) {
+    map.getIterator().iterate(function (key, value) {
       list.add(value);
     });
     return list;
@@ -412,23 +417,23 @@ var eMap = function() {
     */
   var iterator = {
     currentPosition: 0,
-    next: function() {
+    next: function () {
       var key = keys[map.getIterator().currentPosition];
       var value = values[map.getIterator().currentPosition];
       map.getIterator().currentPosition += 1;
       return [key, value];
     },
-    hasNext: function() {
+    hasNext: function () {
       return map.getIterator().currentPosition < map.size();
     },
-    iterate: function(callBack) {
+    iterate: function (callBack) {
       while (map.getIterator().hasNext()) {
         var keyValue = map.getIterator().next();
         callBack(keyValue[0], keyValue[1]);
       }
       map.getIterator().reset();
     },
-    reset: function() {
+    reset: function () {
       map.getIterator().currentPosition = 0;
     }
   };
@@ -438,10 +443,126 @@ var eMap = function() {
     * @return {Object} Iterator containing useful functions
     * to be used to easily loop through all map elements and 
     */
-  map.getIterator = function() {
+  map.getIterator = function () {
     return iterator;
   };
 
-
   return map;
+
 };
+
+if (typeof module !== 'undefined' && module !== null && module.exports) {
+  module.exports = eMap;
+}
+/**
+  * Creates an empty Queue.
+  * @class A Queue is a data structure that declares the behavior of a collection 
+  * that stores a sequence of elements according to the First In First Out rule.
+  * The queue class can be used on its own, but it is defined as abstract as possible
+  * that any class extending it can set rules about operations that can be perfomed on the collection
+  * @constructor
+  */
+
+var eQueue = function () {
+  
+  // object containing all properties and functions of the queue
+  var queue = {};
+  
+  /**
+    * Function to get type of eStructure object
+    */
+  queue.getType = function () {
+    return 'eQueue';
+  };
+
+  /**
+    * Private array property to hold all elements added to the queue
+    */
+  var data = [];
+  
+  /**
+    * Function to get size of eQueue
+    */
+  queue.size = function () {
+    return data.length;
+  };
+  
+  /**
+    * Adds an element to the queue and returns the new size.
+    * @param {Object} item - Element to be added (must always be present).
+    * @return {Integer} New size of the queue if the element was added or -1 if error occurs
+    */
+  queue.put = function (element) {
+    
+    // return error code if no argument is specified
+    if (arguments.length === 0) {
+      return -1;
+    }
+    
+    // add first item passed as argument to private array, ignore all extras
+    data.push(element);
+    
+    // return new size of queue
+    return queue.size();
+
+  };
+  
+  /**
+    * Returns element at the head of the queue.
+    * @return {Object} Object at the head of the queue, -1 if queue is empty
+    */
+  queue.peek = function () {
+    
+    // return error code if no argument is specified
+    if (data.length === 0) {
+      return -1;
+    }
+    
+    // return first element in data array
+    return data[0];
+
+  };
+  
+  /**
+    * Removes element at the head of the queue and returns it.
+    * @return {Object} Object at the head of the queue, -1 if queue is empty
+    */
+  queue.remove = function () {
+    
+    // return error code if no argument is specified
+    if (data.length === 0) {
+      return -1;
+    }
+    
+    // remove and return first element in data array
+    return data.shift();
+
+  };
+  
+  /**
+    * Clears all elements in the queue
+    */
+  queue.clear = function () {
+    
+    // Assign an empty array literal to the data array
+    data = [];
+
+  };
+  
+  /**
+    * Returns the queue as an array
+    */
+  queue.toArray = function () {
+    
+    // Return the data array
+    return data;
+
+  };
+
+  return queue;
+
+};
+
+if (typeof module !== 'undefined' && module !== null && module.exports) {
+  module.exports = eQueue;
+}

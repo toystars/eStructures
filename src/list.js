@@ -7,13 +7,13 @@
   * @constructor
   */
 
-var eList = function() {
+var eList = function () {
 
 
   /**
     * Define all utility functions here...
     */
-  var isObjectOf = function(object) {
+  var isObjectOf = function (object) {
     if (typeof object !== 'object') {
       return false;
     }
@@ -25,7 +25,7 @@ var eList = function() {
     }
   };
 
-  var isValidIndex = function(number) {
+  var isValidIndex = function (number) {
     if ((typeof number !== 'number') || (number % 1 !== 0) || (number < 0)) {
       return false;
     }
@@ -39,7 +39,7 @@ var eList = function() {
   /**
     * Function to get type of eStructure object
     */
-  list.getType = function() {
+  list.getType = function () {
     return 'eList';
   };
 
@@ -51,7 +51,7 @@ var eList = function() {
   /**
     * Function to get size of eList
     */
-  list.size = function() {
+  list.size = function () {
     return data.length;
   };
 
@@ -62,7 +62,7 @@ var eList = function() {
     * @param {Object} item - Element to be added (must always be present).
     * @return {Integer} Non-negeative integer if the element was added or -1 if error occurs
     */
-  list.add = function(index, item) {
+  list.add = function (index, item) {
     // if arguments.length === 0 || > 2, throw error
     if (arguments.length === 0 || arguments.length > 2) {
       return -1;
@@ -102,7 +102,7 @@ var eList = function() {
     * @param {Object} eList - List to be added (must always be present).
     * @return {Integer} Non-negeative integer if the eList was added or -1 if error occurs
     */
-  list.addAll = function(index, eList) {
+  list.addAll = function (index, eList) {
     // if arguments.length === 0 || > 2, throw error
     if (arguments.length === 0 || arguments.length > 2) {
       return -1;
@@ -138,7 +138,7 @@ var eList = function() {
         return list.size();
       } else if (index < data.length - 1) {
         // go through array and splice at incrementing index
-        eList.getIterator().iterate(function(item, currentPosition) {
+        eList.getIterator().iterate(function (item, currentPosition) {
           data.splice(index, 0, item);
           index++
         });
@@ -154,7 +154,7 @@ var eList = function() {
     * @param {Object} item - new element to be placed in specified index
     * @return {boolean} true if element is replaced successfully, false if error occurs
     */
-  list.set = function(index, item) {
+  list.set = function (index, item) {
     // if arguments.length === 0 || > 2, throw error
     if (arguments.length < 2 || arguments.length > 2 || isValidIndex(index) === false || index > list.size() - 1) {
       return -1;
@@ -170,7 +170,7 @@ var eList = function() {
     * @param {Integer} index - index of element to be retrieved
     * @return {Object} Object at index if found, -1 if error occur
     */
-  list.get = function(index) {
+  list.get = function (index) {
     // validate argument provided
     if (index === undefined || index < 0 || list.size() === 0 || arguments.length > 1 || index >= list.size()) {
       return -1;
@@ -178,8 +178,8 @@ var eList = function() {
 
     if (isValidIndex(index) === false) {
       return -1;
-    } 
-    
+    }
+
     return data[index];
   };
 
@@ -187,7 +187,7 @@ var eList = function() {
     * Delete element in specified index
     * @return {Object} Array containing removed element
     */
-  list.remove = function(index) {
+  list.remove = function (index) {
     // validate argument provided
     if (index === undefined || index < 0 || list.size() === 0 || arguments.length > 1 || index >= list.size()) {
       return -1;
@@ -203,14 +203,14 @@ var eList = function() {
   /**
     * @return {Array} Array containing all eList elements or empty array if eList is empty
     */
-  list.toArray = function() {
+  list.toArray = function () {
     return data;
   };
 
   /**
     * @return {String} String containing all eList elements or empty string if eList is empty
     */
-  list.toString = function() {
+  list.toString = function () {
     return data.toString();
   };
 
@@ -218,7 +218,7 @@ var eList = function() {
     * ForEach function to loop through eList elements
     * @param {Function} callBack - callBack function to be provided on each element
     */
-  list.forEach = function(callBack) {
+  list.forEach = function (callBack) {
     list.getIterator().iterate(callBack);
   };
 
@@ -227,21 +227,21 @@ var eList = function() {
     */
   var iterator = {
     currentPosition: 0,
-    next: function() {
+    next: function () {
       var item = list.get(list.getIterator().currentPosition);
       this.currentPosition += 1;
       return item;
     },
-    hasNext: function() {
+    hasNext: function () {
       return this.currentPosition < list.size();
     },
-    iterate: function(callBack) {
+    iterate: function (callBack) {
       while (list.getIterator().hasNext()) {
         callBack(list.getIterator().next(), list.getIterator().currentPosition);
       }
       list.getIterator().reset();
     },
-    reset: function() {
+    reset: function () {
       list.getIterator().currentPosition = 0;
     }
   };
@@ -251,9 +251,14 @@ var eList = function() {
     * @return {Object} Iterator containing useful functions
     * to be used to easily loop through all list elements
     */
-  list.getIterator = function() {
+  list.getIterator = function () {
     return iterator;
   };
 
   return list;
+
 };
+
+if (typeof module !== 'undefined' && module !== null && module.exports) {
+  module.exports = eList;
+}
