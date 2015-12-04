@@ -144,8 +144,23 @@ describe("eMap - test eMap iterator", function() {
   });
 });
 
+describe("eMap - remove key-value pair from eMap", function() {
+  it("should return new size of eMap after removal or undefined if key is not in eMap", function() {
+    var map = new eMap();
+    map.put("name", "Babatunde");
+    map.put("age", 25);
+    expect(map.remove("school")).toBe(undefined);
+  });
+});
 
-
+describe("eMap - remove key-value pair from eMap", function() {
+  it("should return new size of eMap after removal or undefined if key is not in eMap", function() {
+    var map = new eMap();
+    map.put("name", "Babatunde");
+    map.put("age", 25);
+    expect(map.remove("name")).toBe(1);
+  });
+});
 
 
 
