@@ -7,6 +7,7 @@ Extended data structures for JavaScript.
 * [List](https://github.com/toystars/eStructures/wiki/eList)
 * [Map](https://github.com/toystars/eStructures/blob/master/src/map.js)
 * [Queue](https://github.com/toystars/eStructures/wiki/eQueue)
+* [Stack](https://github.com/toystars/eStructures/wiki/eStack)
 
 
 ## Documentation
