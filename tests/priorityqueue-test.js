@@ -37,12 +37,12 @@ describe("ePriorityQueue - return the element at the head of the queue without r
   queue.put(3);
   queue.put(1);
 
-  it("should return 2", function () {
+  it("should return 1", function () {
     expect(queue.peek()).toBe(1);
   });
 
-  it("should return 2", function () {
-    expect(queue.size()).toBe(2);
+  it("should return 3", function () {
+    expect(queue.size()).toBe(3);
   });
 
 });
@@ -82,10 +82,10 @@ describe("ePriorityQueue - return the element at the head of the queue and remov
   queue.put(3);
   queue.put(1);
   it("should return 2", function () {
-    expect(queue.remove()).toBe(2);
+    expect(queue.remove()).toBe(1);
   });
   it("should return 1", function () {
-    expect(queue.size()).toBe(1);
+    expect(queue.size()).toBe(2);
   });
 });
 
