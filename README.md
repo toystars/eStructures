@@ -65,8 +65,8 @@ Check issues for current issues.
 
 ## Credits
 
-- Mustapha Babatunde
-- Toni Solarin-Sodara
+- [Mustapha Babatunde](https://twitter.com/iAmToystars)
+- [Toni Solarin-Sodara](https://twitter.com/tonerdo)
 
 ## License
 
