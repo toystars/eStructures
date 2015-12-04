@@ -464,8 +464,9 @@ if (typeof module !== 'undefined' && module !== null && module.exports) {
 }
 /**
   * Creates an empty Queue.
-  * @class A Queue is a data structure that declares the behavior of a collection 
-  * that stores a sequence of elements according to the First In First Out rule.
+  * @class A Priority Queue is a data structure that declares the behavior of a collection 
+  * that stores a sequence of elements according to the First In First Out rule
+  * while keeping the elements in the sequence sorted according to a specified condition
   * The queue class can be used on its own, but it is defined as abstract as possible
   * that any class extending it can set rules about operations that can be perfomed on the collection
   * @constructor
