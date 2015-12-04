@@ -69,3 +69,11 @@ describe("eQueue - clear contents of queue", function () {
   });
   
 });
+
+describe("eQueue - convert queue to array", function () {  
+  it("should be an instance of Array", function () {
+    var queue = new eQueue();
+    expect(queue.toArray() instanceof Array).toBe(true);
+  });
+  
+});
