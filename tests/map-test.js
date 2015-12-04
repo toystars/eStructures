@@ -73,6 +73,15 @@ describe("eMap - check if map contains specified key", function() {
   });
 });
 
+describe("eMap - check if map contains specified key", function() {
+  it("should return containsKey status of map", function() {
+    var map = new eMap();
+    map.put("name", "Babatunde");
+    map.put("age", 25);
+    expect(map.containsKey("school")).toBeFalsy();
+  });
+});
+
 describe("eMap - clear map", function() {
   it("should return 0 when map is successfully cleared", function() {
     var map = new eMap();

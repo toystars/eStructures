@@ -344,7 +344,7 @@ var eMap = function () {
     */
   map.containsKey = function (key) {
     if (!key) {
-      return -1;
+      return new eException(false, 'No argument provided. Key must be provided', );
     }
 
     if (keys.indexOf(key.toLowerCase()) !== -1) {
