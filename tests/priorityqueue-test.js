@@ -70,8 +70,8 @@ describe("ePriorityQueue - use custom compare function", function () {
     expect(queue.peek().age).toBe(22);
   });
 
-  it("should return 2", function () {
-    expect(queue.size()).toBe(2);
+  it("should return 3", function () {
+    expect(queue.size()).toBe(3);
   });
 
 });
