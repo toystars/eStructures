@@ -38,7 +38,7 @@ describe("eStack - return the element at the head of the stack without removing 
   stack.put(3);
 
   it("should return 2", function () {
-    expect(stack.peek()).toBe(2);
+    expect(stack.peek()).toBe(3);
   });
 
   it("should return 2", function () {
@@ -52,7 +52,7 @@ describe("eStack - return the element at the head of the stack and remove it", f
   stack.put(2);
   stack.put(3);
   it("should return 2", function () {
-    expect(stack.remove()).toBe(2);
+    expect(stack.remove()).toBe(3);
   });
   it("should return 1", function () {
     expect(stack.size()).toBe(1);
