@@ -4,23 +4,10 @@ Extended data structures for JavaScript.
 
 ## Available data structures
 
-* [List](https://github.com/toystars/eStructures/blob/master/src/list.js)
+* [List](https://github.com/toystars/eStructures/wiki/eList)
 * [Map](https://github.com/toystars/eStructures/blob/master/src/map.js)
+* [Queue](https://github.com/toystars/eStructures/wiki/eQueue)
 
-## Usage
-### * List
-create an empty eList object
-```javascript
-var list = new eList();
-```
-add elements to eList
-```javascript
-list.add(5); // element is added to the end of list
-list.add(1, 'eStructures'); // element is added to the specified index and other elements pushed further
-list.add({name: 'library', valid: true});
-
-// returns new list size when successful, -1 when error occurs
-```
 
 ## Documentation
 See the [Wiki](https://github.com/toystars/eStructures/wiki) for documentation.
@@ -79,6 +66,7 @@ Check issues for current issues.
 ## Credits
 
 - Mustapha Babatunde
+- Toni Solarin-Sodara
 
 ## License
 
