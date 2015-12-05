@@ -9,13 +9,13 @@
 var eMap = function () {
 
   // utility functions
-  var sanitizeArguments = function (arguments) {
+  var sanitizeArguments = function (params) {
     // check for argument length
-    if (arguments.length < 2 || arguments.length > 2) {
+    if (params.length < 2 || params.length > 2) {
       return false;
     }
     // check for type of first argument
-    if (typeof arguments[0] !== 'string') {
+    if (typeof params[0] !== 'string') {
       return false;
     }
     return true;

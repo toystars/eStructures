@@ -140,7 +140,7 @@ var eList = function () {
         // go through array and splice at incrementing index
         eList.getIterator().iterate(function (item, currentPosition) {
           data.splice(index, 0, item);
-          index++
+          index++;
         });
         return list.size();
       }
@@ -274,13 +274,13 @@ if (typeof module !== 'undefined' && module !== null && module.exports) {
 var eMap = function () {
 
   // utility functions
-  var sanitizeArguments = function (arguments) {
+  var sanitizeArguments = function (params) {
     // check for argument length
-    if (arguments.length < 2 || arguments.length > 2) {
+    if (params.length < 2 || params.length > 2) {
       return false;
     }
     // check for type of first argument
-    if (typeof arguments[0] !== 'string') {
+    if (typeof params[0] !== 'string') {
       return false;
     }
     return true;
@@ -686,6 +686,39 @@ var eQueue = function () {
 
   };
 
+  /**
+    * Private iterator property to be used to loop through queue elements
+    */
+  var iterator = {
+    currentPosition: 0,
+    next: function () {
+      var item = data[this.currentPosition];
+      this.currentPosition += 1;
+      return item;
+    },
+    hasNext: function () {
+      return this.currentPosition < queue.size();
+    },
+    iterate: function (callBack) {
+      while (this.hasNext()) {
+        callBack(this.next());
+      }
+      this.reset();
+    },
+    reset: function () {
+      this.currentPosition = 0;
+    }
+  };
+
+  /**
+    * Get iterator object
+    * @return {Object} Iterator containing useful functions
+    * to be used to easily loop through all queue elements
+    */
+  queue.getIterator = function () {
+    return iterator;
+  };
+
   return queue;
 
 };
@@ -724,6 +757,14 @@ var eStack = function () {
     */
   stack.size = function () {
     return data.length;
+  };
+
+  /**
+    * Returns empty status of stack
+    * @return {Boolean} true if stack is empty, false if otherwise
+    */
+  stack.isEmpty = function () {
+    return data.length === 0;
   };
   
   /**

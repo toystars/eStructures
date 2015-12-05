@@ -78,3 +78,18 @@ describe("eStack - convert stack to array", function () {
   });
 
 });
+
+describe("eStack - check if stack is empty", function () {
+  it("should return empty status of stack", function () {
+    var stack = new eStack();
+    expect(stack.isEmpty()).toBe(true);
+  });
+});
+
+describe("eStack - check if stack is empty", function () {
+  it("should return empty status of stack", function () {
+    var stack = new eStack();
+    stack.put(10);
+    expect(stack.isEmpty()).toBe(false);
+  });
+});
