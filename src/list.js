@@ -140,7 +140,7 @@ var eList = function () {
         // go through array and splice at incrementing index
         eList.getIterator().iterate(function (item, currentPosition) {
           data.splice(index, 0, item);
-          index++
+          index++;
         });
         return list.size();
       }

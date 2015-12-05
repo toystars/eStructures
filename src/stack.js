@@ -30,6 +30,14 @@ var eStack = function () {
   stack.size = function () {
     return data.length;
   };
+
+  /**
+    * Returns empty status of stack
+    * @return {Boolean} true if stack is empty, false if otherwise
+    */
+  stack.isEmpty = function () {
+    return data.length === 0;
+  };
   
   /**
     * Adds an element to the stack and returns the new size.
