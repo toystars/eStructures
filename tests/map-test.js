@@ -197,3 +197,11 @@ describe("eMap - join two eMaps into one", function() {
   });
 });
 
+describe("eMap - edit value associated with specified key", function() {
+  it("should return new value of key specified", function() {
+    var map = new eMap();
+    map.put("name", "Babatunde");
+    map.put("age", 25);
+    expect(map.set("age", 18)).toBe(18);
+  });
+});

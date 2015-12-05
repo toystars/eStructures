@@ -373,6 +373,21 @@ var eMap = function () {
   };
 
   /**
+    * Sets value associated with key (converts key to lowercase).
+    * @param {String} key - Key to be used to retrieve value
+    * @param {Object} value - value to be used as replacement
+    * @return {Object/undefined} element or undefined if key is not in map
+    */
+  map.set = function (key, value) {
+    if (!key || !map.containsKey(key) || !value) {
+      return -1;
+    }
+    // set value
+    values[keys.indexOf(key.toLowerCase())] = value;
+    return map.get(key);
+  };
+
+  /**
     * Gets value associated with key (converts key to lowercase).
     * @param {String} key - Key to be used to retrieve value
     * @return {Object/undefined} element or undefined if key is not in map
@@ -389,7 +404,7 @@ var eMap = function () {
     * Gets all keys in eMap as an array of strings
     * @return {Object} array of all keys
     */
-  map.getKeySet = function(key) {
+  map.getKeySet = function() {
     return keys;
   };
 
