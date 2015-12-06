@@ -208,3 +208,59 @@ describe("eLinkedList - test toArray method of linkedList", function() {
   });
 });
 
+describe("eLinkedList - test set method of linkedList", function() {
+  it("should return false due to parameter errors", function() {
+    var linkedList = new eLinkedList();
+    linkedList.add('eStructures');
+    linkedList.add('linkedList');
+    linkedList.add('JavaScript');
+    linkedList.add(57);
+    expect(linkedList.set(2)).toBe(false);
+  });
+});
+
+describe("eLinkedList - test set method of linkedList", function() {
+  it("should return false due to parameter errors", function() {
+    var linkedList = new eLinkedList();
+    linkedList.add('eStructures');
+    linkedList.add('linkedList');
+    linkedList.add('JavaScript');
+    linkedList.add(57);
+    expect(linkedList.set()).toBe(false);
+  });
+});
+
+describe("eLinkedList - test set method of linkedList", function() {
+  it("should return false due to parameter errors", function() {
+    var linkedList = new eLinkedList();
+    linkedList.add('eStructures');
+    linkedList.add('linkedList');
+    linkedList.add('JavaScript');
+    linkedList.add(57);
+    expect(linkedList.set('name', 25)).toBe(false);
+  });
+});
+
+describe("eLinkedList - test set method of linkedList", function() {
+  it("should return true if data is successfully replaced", function() {
+    var linkedList = new eLinkedList();
+    linkedList.add('eStructures');
+    linkedList.add('linkedList');
+    linkedList.add('JavaScript');
+    linkedList.add(57);
+    expect(linkedList.set(0, 25)).toBe(true);
+  });
+});
+
+describe("eLinkedList - test set method of linkedList", function() {
+  it("should replace element in specified index", function() {
+    var linkedList = new eLinkedList();
+    linkedList.add('eStructures');
+    linkedList.add('linkedList');
+    linkedList.add('JavaScript');
+    linkedList.add(57);
+    linkedList.set(2, 100);
+    expect(linkedList.nodeAtIndex(2).data).toBe(100);
+  });
+});
+

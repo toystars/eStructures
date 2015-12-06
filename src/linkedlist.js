@@ -103,6 +103,21 @@ var eLinkedList = function () {
   };
 
   /**
+    * Sets data of element at specified index to new data
+    * @param {Integer} Non-negative integer - Index of element tobe replaced
+    * @param {Object} Object - Replacement object
+    * @return {Boolean} true if element replacement is successful, false if otherwise
+    */
+  linkedList.set = function (index, data) {
+    if (arguments.length < 2 || typeof index !== 'number') {
+      return false;
+    }
+    var node = linkedList.nodeAtIndex(index);
+    node.data = data;
+    return true;
+  };
+
+  /**
     * Adds an element as first element of the linkedList.
     * @param {Object} item - Element to be added (must always be present).
     * @return {Integer} Non-negeative integer if the element was added or -1 if error occurs
