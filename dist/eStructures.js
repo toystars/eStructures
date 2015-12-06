@@ -78,6 +78,23 @@ var eLinkedList = function () {
     return linkedList.size();
   };
 
+  /**
+    * Iterates over linkedList
+    * @param {Object} Function - CallBack function that takes the data and position at each level of 
+    * linkedList
+    * at each level...
+    */
+  linkedList.iterate = function (callBack) {
+    var current = start,
+    position = 1;
+    while (current !== null) {
+      callBack(current.data, position);
+      current = current.next;
+      position++;
+    }
+  };
+  
+
   return linkedList;
 };
 

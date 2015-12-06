@@ -62,3 +62,33 @@ describe("eLinkedList - test getLast method of linkedList", function() {
     expect(linkedList.getLast().data).toBe(57);
   });
 });
+
+describe("eLinkedList - test iterate method of linkedList", function() {
+  it("should iterate through the linkedList", function() {
+    var linkedList = new eLinkedList();
+    linkedList.add('eStructures');
+    linkedList.add('linkedList');
+    linkedList.add('JavaScript');
+    linkedList.add(57);
+    var array = [];
+    linkedList.iterate(function(element) {
+      array.push(element);
+    });
+    expect(array.length).toBe(4);
+  });
+});
+
+describe("eLinkedList - test iterate method of linkedList", function() {
+  it("should iterate through the linkedList", function() {
+    var linkedList = new eLinkedList();
+    linkedList.add('eStructures');
+    linkedList.add('linkedList');
+    linkedList.add('JavaScript');
+    linkedList.add(57);
+    var array = [];
+    linkedList.iterate(function(element) {
+      array.push(element);
+    });
+    expect(array[2]).toBe('JavaScript');
+  });
+});
