@@ -78,6 +78,15 @@ var eLinkedList = function () {
   };
 
   /**
+    * Removes all the elements from the eLinkedList.
+    */
+  linkedList.clear = function () {
+    start = null;
+    end = null;
+    length = 0;
+  };
+
+  /**
     * Adds an element to the linkedList.
     * @param {Object} item - Element to be added (must always be present).
     * @return {Integer} Non-negeative integer if the element was added or -1 if error occurs

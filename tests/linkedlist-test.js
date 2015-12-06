@@ -150,5 +150,41 @@ describe("eLinkedList - test nodeAtPosition method of linkedList", function() {
   });
 });
 
+describe("eLinkedList - test clear method of linkedList", function() {
+  it("should return null as first element in linkedList", function() {
+    var linkedList = new eLinkedList();
+    linkedList.add('eStructures');
+    linkedList.add('linkedList');
+    linkedList.add('JavaScript');
+    linkedList.add(57);
+    linkedList.clear();
+    expect(linkedList.getFirst()).toBe(null);
+  });
+});
+
+describe("eLinkedList - test clear method of linkedList", function() {
+  it("should return null as last element in linkedList", function() {
+    var linkedList = new eLinkedList();
+    linkedList.add('eStructures');
+    linkedList.add('linkedList');
+    linkedList.add('JavaScript');
+    linkedList.add(57);
+    linkedList.clear();
+    expect(linkedList.getLast()).toBe(null);
+  });
+});
+
+describe("eLinkedList - test clear method of linkedList", function() {
+  it("should return 0 as the size of linkedList", function() {
+    var linkedList = new eLinkedList();
+    linkedList.add('eStructures');
+    linkedList.add('linkedList');
+    linkedList.add('JavaScript');
+    linkedList.add(57);
+    linkedList.clear();
+    expect(linkedList.size()).toBe(0);
+  });
+});
+
 
 
