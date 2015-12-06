@@ -116,5 +116,39 @@ describe("eLinkedList - test insertAsFirst method of linkedList", function() {
   });
 });
 
+describe("eLinkedList - test nodeAtPosition method of linkedList", function() {
+  it("should return element at specified position", function() {
+    var linkedList = new eLinkedList();
+    linkedList.add('eStructures');
+    linkedList.add('linkedList');
+    linkedList.add('JavaScript');
+    linkedList.add(57);
+    expect(linkedList.nodeAtPosition('Babatunde')).toBe(undefined);
+  });
+});
+
+describe("eLinkedList - test nodeAtPosition method of linkedList", function() {
+  it("should return element at specified position", function() {
+    var linkedList = new eLinkedList();
+    linkedList.add('eStructures');
+    linkedList.add('linkedList');
+    linkedList.add('JavaScript');
+    linkedList.add(57);
+    expect(linkedList.nodeAtPosition()).toBe(undefined);
+  });
+});
+
+describe("eLinkedList - test nodeAtPosition method of linkedList", function() {
+  it("should return element at specified position", function() {
+    var linkedList = new eLinkedList();
+    linkedList.add('eStructures');
+    linkedList.add('linkedList');
+    linkedList.add('JavaScript');
+    linkedList.add(57);
+    var node = linkedList.nodeAtPosition(3);
+    expect(node.data).toBe('JavaScript');
+  });
+});
+
 
 

@@ -55,6 +55,29 @@ var eLinkedList = function () {
   };
 
   /**
+    * Returns the element at the specified position of eLinkedList
+    */
+  linkedList.nodeAtPosition = function (position) {
+    var node, i;
+
+    if (typeof position !== 'number' || position < 1 || position > length) {
+      return undefined;
+    }
+
+    if (position === length) {
+      return linkedList.getLast();
+    }
+
+    node = linkedList.getFirst();
+
+    for (i = 1; i < position; i++) {
+      node = node.next;
+    }
+
+    return node;
+  };
+
+  /**
     * Adds an element to the linkedList.
     * @param {Object} item - Element to be added (must always be present).
     * @return {Integer} Non-negeative integer if the element was added or -1 if error occurs
