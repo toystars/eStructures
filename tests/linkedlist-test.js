@@ -92,3 +92,28 @@ describe("eLinkedList - test iterate method of linkedList", function() {
     expect(array[2]).toBe('JavaScript');
   });
 });
+
+describe("eLinkedList - test insertAsFirst method of linkedList", function() {
+  it("should return the new item as the first item added to linkedList", function() {
+    var linkedList = new eLinkedList();
+    linkedList.add('eStructures');
+    linkedList.add('linkedList');
+    linkedList.add('JavaScript');
+    linkedList.add(57);
+    linkedList.insertAsFirst('Babatunde')
+    expect(linkedList.getFirst().data).toBe('Babatunde');
+  });
+});
+
+describe("eLinkedList - test insertAsFirst method of linkedList", function() {
+  it("should return new size of linkedList", function() {
+    var linkedList = new eLinkedList();
+    linkedList.add('eStructures');
+    linkedList.add('linkedList');
+    linkedList.add('JavaScript');
+    linkedList.add(57);
+    expect(linkedList.insertAsFirst('Babatunde')).toBe(5);
+  });
+});
+
+

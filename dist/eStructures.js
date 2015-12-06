@@ -79,6 +79,20 @@ var eLinkedList = function () {
   };
 
   /**
+    * Adds an element as first element of the linkedList.
+    * @param {Object} item - Element to be added (must always be present).
+    * @return {Integer} Non-negeative integer if the element was added or -1 if error occurs
+    */
+  linkedList.insertAsFirst = function (data) {
+    var temp = makeNode();
+    temp.next = start;
+    start = temp;
+    temp.data = data;
+    length++;
+    return linkedList.size();
+  };
+
+  /**
     * Iterates over linkedList
     * @param {Object} Function - CallBack function that takes the data and position at each level of 
     * linkedList
