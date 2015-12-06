@@ -77,37 +77,3 @@ describe("eQueue - convert queue to array", function () {
   });
   
 });
-
-describe("eQueue - check iterator of queue", function () {
-  var queue = new eQueue();
-  var iterator = queue.getIterator();
-  
-  it("queue queue iterator.hasNext() should return false", function () {
-    expect(iterator.hasNext()).toBe(false);
-  });
-  
-});
-
-describe("eQueue - check iterator of queue", function () {
-  var queue = new eQueue();
-  var iterator = queue.getIterator();
-  queue.put(3);
-
-  it("queue queue iterator.hasNext() should return true", function () {
-    expect(iterator.hasNext()).toBe(true);
-  });
-  
-});
-
-describe("eQueue - check iterator of queue", function () {
-  var queue = new eQueue();
-  var iterator = queue.getIterator();
-  queue.put(3);
-
-  it("queue queue iterator.next() should return 3", function () {
-    expect(iterator.next()).toBe(3);
-  });
-  
-});
-
-

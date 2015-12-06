@@ -701,39 +701,6 @@ var eQueue = function () {
 
   };
 
-  /**
-    * Private iterator property to be used to loop through queue elements
-    */
-  var iterator = {
-    currentPosition: 0,
-    next: function () {
-      var item = data[this.currentPosition];
-      this.currentPosition += 1;
-      return item;
-    },
-    hasNext: function () {
-      return this.currentPosition < queue.size();
-    },
-    iterate: function (callBack) {
-      while (this.hasNext()) {
-        callBack(this.next());
-      }
-      this.reset();
-    },
-    reset: function () {
-      this.currentPosition = 0;
-    }
-  };
-
-  /**
-    * Get iterator object
-    * @return {Object} Iterator containing useful functions
-    * to be used to easily loop through all queue elements
-    */
-  queue.getIterator = function () {
-    return iterator;
-  };
-
   return queue;
 
 };
