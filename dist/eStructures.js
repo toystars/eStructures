@@ -82,9 +82,22 @@ var eLinkedList = function () {
   };
 
   /**
+    * Removes first element from the eLinkedList.
+    * @return {Boolean} true if first element is successfully removed, false if error occur
+    */
+  linkedList.removeFirst = function () {
+    if (length > 0) {
+      start = start.next;
+      length--;
+      return true;
+    }
+    return false;
+  };
+
+  /**
     * Adds an element to the linkedList.
     * @param {Object} item - Element to be added (must always be present).
-    * @return {Integer} Non-negeative integer if the element was added or -1 if error occurs
+    * @return {Integer} Non-negative integer if the element was added or -1 if error occurs
     */
   linkedList.add = function (data) {
     if (!data) {

@@ -264,3 +264,31 @@ describe("eLinkedList - test set method of linkedList", function() {
   });
 });
 
+describe("eLinkedList - test removeFirst method of linkedList", function() {
+  it("should return true if head is successfully removed", function() {
+    var linkedList = new eLinkedList();
+    linkedList.add('eStructures');
+    linkedList.add('linkedList');
+    linkedList.add('JavaScript');
+    linkedList.add(57);
+    expect(linkedList.removeFirst()).toBe(true);
+  });
+});
+
+describe("eLinkedList - test removeFirst method of linkedList", function() {
+  it("should return new item shifted to head of linkedList", function() {
+    var linkedList = new eLinkedList();
+    linkedList.add('eStructures');
+    linkedList.add('linkedList');
+    linkedList.add('JavaScript');
+    linkedList.add(57);
+    linkedList.removeFirst();
+    expect(linkedList.getFirst().data).toBe('linkedList');
+  });
+});
+
+
+
+
+
+
