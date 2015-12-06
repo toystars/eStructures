@@ -55,25 +55,20 @@ var eLinkedList = function () {
   };
 
   /**
-    * Returns the element at the specified position of eLinkedList
+    * Returns the element at the specified index of eLinkedList
     */
-  linkedList.nodeAtPosition = function (position) {
+  linkedList.nodeAtIndex = function (index) {
     var node, i;
-
-    if (typeof position !== 'number' || position < 1 || position > length) {
+    if (typeof index !== 'number' || index < 0 || index >= length) {
       return undefined;
     }
-
-    if (position === length) {
+    if (index === (length - 1)) {
       return linkedList.getLast();
     }
-
-    node = linkedList.getFirst();
-
-    for (i = 1; i < position; i++) {
+    node = linkedList.getFirst()
+    for (i = 0; i < index; i++) {
       node = node.next;
     }
-
     return node;
   };
 
@@ -92,11 +87,9 @@ var eLinkedList = function () {
     * @return {Integer} Non-negeative integer if the element was added or -1 if error occurs
     */
   linkedList.add = function (data) {
-
     if (!data) {
       return -1;
     }
-
     if (start === null) {
       start = makeNode();
       end = start;
@@ -104,7 +97,6 @@ var eLinkedList = function () {
       end.next = makeNode();
       end = end.next; 
     }
-
     end.data = data;
     length++;
     return linkedList.size();
@@ -138,6 +130,17 @@ var eLinkedList = function () {
       current = current.next;
       position++;
     }
+  };
+
+  /**
+    * Returns array representation of linkedList data
+    */
+  linkedList.toArray = function () {
+    var array = [];
+    linkedList.iterate(function(data) {
+      array.push(data);
+    });
+    return array;
   };
   
 

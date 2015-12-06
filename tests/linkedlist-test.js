@@ -116,36 +116,36 @@ describe("eLinkedList - test insertAsFirst method of linkedList", function() {
   });
 });
 
-describe("eLinkedList - test nodeAtPosition method of linkedList", function() {
+describe("eLinkedList - test nodeAtIndex method of linkedList", function() {
   it("should return element at specified position", function() {
     var linkedList = new eLinkedList();
     linkedList.add('eStructures');
     linkedList.add('linkedList');
     linkedList.add('JavaScript');
     linkedList.add(57);
-    expect(linkedList.nodeAtPosition('Babatunde')).toBe(undefined);
+    expect(linkedList.nodeAtIndex('Babatunde')).toBe(undefined);
   });
 });
 
-describe("eLinkedList - test nodeAtPosition method of linkedList", function() {
+describe("eLinkedList - test nodeAtIndex method of linkedList", function() {
   it("should return element at specified position", function() {
     var linkedList = new eLinkedList();
     linkedList.add('eStructures');
     linkedList.add('linkedList');
     linkedList.add('JavaScript');
     linkedList.add(57);
-    expect(linkedList.nodeAtPosition()).toBe(undefined);
+    expect(linkedList.nodeAtIndex()).toBe(undefined);
   });
 });
 
-describe("eLinkedList - test nodeAtPosition method of linkedList", function() {
+describe("eLinkedList - test nodeAtIndex method of linkedList", function() {
   it("should return element at specified position", function() {
     var linkedList = new eLinkedList();
     linkedList.add('eStructures');
     linkedList.add('linkedList');
     linkedList.add('JavaScript');
     linkedList.add(57);
-    var node = linkedList.nodeAtPosition(3);
+    var node = linkedList.nodeAtIndex(2);
     expect(node.data).toBe('JavaScript');
   });
 });
@@ -186,5 +186,25 @@ describe("eLinkedList - test clear method of linkedList", function() {
   });
 });
 
+describe("eLinkedList - test toArray method of linkedList", function() {
+  it("should return array version of linkedList", function() {
+    var linkedList = new eLinkedList();
+    linkedList.add('eStructures');
+    linkedList.add('linkedList');
+    linkedList.add('JavaScript');
+    linkedList.add(57);
+    expect(linkedList.toArray() instanceof Array).toBe(true);
+  });
+});
 
+describe("eLinkedList - test toArray method of linkedList", function() {
+  it("should return array version of linkedList", function() {
+    var linkedList = new eLinkedList();
+    linkedList.add('eStructures');
+    linkedList.add('linkedList');
+    linkedList.add('JavaScript');
+    linkedList.add(57);
+    expect(linkedList.toArray().length).toBe(4);
+  });
+});
 
