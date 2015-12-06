@@ -115,6 +115,7 @@ var eLinkedList = function () {
 if (typeof module !== 'undefined' && module !== null && module.exports) {
   module.exports = eLinkedList;
 }
+
 /**
   * Creates an empty List.
   * @class A List is a data structure that declares the behavior of a collection 
