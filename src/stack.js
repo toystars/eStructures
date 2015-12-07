@@ -66,7 +66,7 @@ var eStack = function () {
   stack.peek = function () {
     
     // return error code if no argument is specified
-    if (data.length === 0) {
+    if (stack.isEmpty()) {
       return -1;
     }
     
@@ -82,7 +82,7 @@ var eStack = function () {
   stack.remove = function () {
     
     // return error code if no argument is specified
-    if (data.length === 0) {
+    if (stack.isEmpty()) {
       return -1;
     }
     
