@@ -165,7 +165,7 @@ var eLinkedList = function () {
     */
   linkedList.toArray = function () {
     var array = [];
-    linkedList.iterate(function(data) {
+    linkedList.iterate(function (data) {
       array.push(data);
     });
     return array;
@@ -957,7 +957,7 @@ var eStack = function () {
   stack.peek = function () {
     
     // return error code if no argument is specified
-    if (data.length === 0) {
+    if (stack.isEmpty()) {
       return -1;
     }
     
@@ -973,7 +973,7 @@ var eStack = function () {
   stack.remove = function () {
     
     // return error code if no argument is specified
-    if (data.length === 0) {
+    if (stack.isEmpty()) {
       return -1;
     }
     
@@ -1009,6 +1009,7 @@ var eStack = function () {
 if (typeof module !== 'undefined' && module !== null && module.exports) {
   module.exports = eStack;
 }
+
   
 /**
   * Creates an eException.

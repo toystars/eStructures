@@ -165,7 +165,7 @@ var eLinkedList = function () {
     */
   linkedList.toArray = function () {
     var array = [];
-    linkedList.iterate(function(data) {
+    linkedList.iterate(function (data) {
       array.push(data);
     });
     return array;

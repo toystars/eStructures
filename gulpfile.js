@@ -7,7 +7,6 @@ var uglify = require('gulp-uglify');
 var rename = require('gulp-rename');
 var isTravis = process.env.TRAVIS || false;
 
-
 gulp.task('tdd', function (done) {
   new Server({
     configFile: __dirname + '/karma.conf.js',

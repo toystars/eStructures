@@ -69,6 +69,7 @@ Check issues for current issues.
 
 - [Mustapha Babatunde](https://twitter.com/iAmToystars)
 - [Toni Solarin-Sodara](https://twitter.com/tonerdo)
+- [Oyebanji Jacob Mayowa](https://twitter.com/py_jac)
 
 ## License
 
