@@ -12,6 +12,17 @@ Extended data structures for JavaScript.
 * [Linked List](https://github.com/toystars/eStructures/wiki/eLinkedList)
 
 
+## How to use
+Install via npm
+```bash
+$ npm install e-structures
+```
+Install via bower
+```bash
+$ bower install e-structures
+```
+
+
 ## Documentation
 See the [Wiki](https://github.com/toystars/eStructures/wiki) for documentation.
 
