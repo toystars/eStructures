@@ -2,7 +2,7 @@
   * Creates an empty LinkedList.
   * @class A Linkedlist is a data structure that declares the behavior of a collection 
   * that stores a sequence of elements with each element pointing to the next element,
-  * while the last element points to null to signify the end of the link chai
+  * while the last element points to null to signify the end of the link chain
   * @constructor
   */
 
@@ -55,21 +55,53 @@ var eLinkedList = function () {
   };
 
   /**
-    * Returns the element at the specified index of eLinkedList
+    * Returns the element at the specified position of eLinkedList
     */
-  linkedList.nodeAtIndex = function (index) {
+  linkedList.nodeAtPosition = function (position) {
     var node, i;
-    if (typeof index !== 'number' || index < 0 || index >= length) {
+    if (typeof position !== 'number' || position < 1 || position > length) {
       return undefined;
     }
-    if (index === (length - 1)) {
+    if (position === length) {
       return linkedList.getLast();
     }
-    node = linkedList.getFirst()
-    for (i = 0; i < index; i++) {
+    node = linkedList.getFirst();
+    for (i = 1; i < position; i++) {
       node = node.next;
     }
     return node;
+  };
+
+  /**
+    * Removes node from specified index in linkedList.
+    * @return {Object} removed node if successful, undefined if error occurs
+    */
+  linkedList.remove = function (position) {
+    var previousNode, currentNode;
+
+    if (!position || position < 1 || position > length) {
+      return undefined;
+    }
+
+    if (position === 1) {
+      currentNode = start;
+      start = start.next;
+      length--;
+      return currentNode;
+    } else if (position === length) {
+      previousNode = linkedList.nodeAtPosition(position - 1);
+      currentNode = end;
+      previousNode.next = null;
+      length--;
+      return currentNode;
+    }
+
+    previousNode = linkedList.nodeAtPosition(position - 1);
+    currentNode = linkedList.nodeAtPosition(position);
+    previousNode.next = linkedList.nodeAtPosition(position + 1);
+    length--;
+
+    return currentNode;
   };
 
   /**
@@ -95,10 +127,10 @@ var eLinkedList = function () {
   };
 
   /**
-    * Adds an element to the linkedList.
-    * @param {Object} item - Element to be added (must always be present).
-    * @return {Integer} Non-negative integer if the element was added or -1 if error occurs
-    */
+   * Adds an element to the linkedList.
+   * @return {Integer} Non-negative integer if the element was added or -1 if error occurs
+   * @param data
+   */
   linkedList.add = function (data) {
     if (!data) {
       return -1;
@@ -116,24 +148,24 @@ var eLinkedList = function () {
   };
 
   /**
-    * Sets data of element at specified index to new data
-    * @param {Integer} Non-negative integer - Index of element tobe replaced
-    * @param {Object} Object - Replacement object
-    * @return {Boolean} true if element replacement is successful, false if otherwise
-    */
-  linkedList.set = function (index, data) {
-    if (arguments.length < 2 || typeof index !== 'number') {
+   * Sets data of element at specified index to new data
+   * @return {Boolean} true if element replacement is successful, false if otherwise
+   * @param position
+   * @param data
+   */
+  linkedList.set = function (position, data) {
+    if (arguments.length < 2 || typeof position !== 'number' || position < 1 || position > length) {
       return false;
     }
-    var node = linkedList.nodeAtIndex(index);
+    var node = linkedList.nodeAtPosition(position);
     node.data = data;
     return true;
   };
 
   /**
     * Adds an element as first element of the linkedList.
-    * @param {Object} item - Element to be added (must always be present).
-    * @return {Integer} Non-negeative integer if the element was added or -1 if error occurs
+    * @param {Object} data - Element to be added (must always be present).
+    * @return {Integer} Non-negative integer if the element was added or -1 if error occurs
     */
   linkedList.insertAsFirst = function (data) {
     var temp = makeNode();
@@ -146,7 +178,7 @@ var eLinkedList = function () {
 
   /**
     * Iterates over linkedList
-    * @param {Object} Function - CallBack function that takes the data and position at each level of 
+    * @param {Function} callBack - CallBack function that takes the data and position at each level of
     * linkedList
     * at each level...
     */

@@ -4,6 +4,7 @@
   * Test cases for eLinkedList data structure
   */
 
+
 describe("eLinkedList - getType query", function() {
   it("should return type of eList", function() {
     var linkedList = new eLinkedList();
@@ -116,37 +117,37 @@ describe("eLinkedList - test insertAsFirst method of linkedList", function() {
   });
 });
 
-describe("eLinkedList - test nodeAtIndex method of linkedList", function() {
+describe("eLinkedList - test nodeAtPosition method of linkedList", function() {
   it("should return element at specified position", function() {
     var linkedList = new eLinkedList();
     linkedList.add('eStructures');
     linkedList.add('linkedList');
     linkedList.add('JavaScript');
     linkedList.add(57);
-    expect(linkedList.nodeAtIndex('Babatunde')).toBe(undefined);
+    expect(linkedList.nodeAtPosition('Babatunde')).toBe(undefined);
   });
 });
 
-describe("eLinkedList - test nodeAtIndex method of linkedList", function() {
+describe("eLinkedList - test nodeAtPosition method of linkedList", function() {
   it("should return element at specified position", function() {
     var linkedList = new eLinkedList();
     linkedList.add('eStructures');
     linkedList.add('linkedList');
     linkedList.add('JavaScript');
     linkedList.add(57);
-    expect(linkedList.nodeAtIndex()).toBe(undefined);
+    expect(linkedList.nodeAtPosition()).toBe(undefined);
   });
 });
 
-describe("eLinkedList - test nodeAtIndex method of linkedList", function() {
+describe("eLinkedList - test nodeAtPosition method of linkedList", function() {
   it("should return element at specified position", function() {
     var linkedList = new eLinkedList();
     linkedList.add('eStructures');
     linkedList.add('linkedList');
     linkedList.add('JavaScript');
     linkedList.add(57);
-    var node = linkedList.nodeAtIndex(2);
-    expect(node.data).toBe('JavaScript');
+    var node = linkedList.nodeAtPosition(2);
+    expect(node.data).toBe('linkedList');
   });
 });
 
@@ -248,19 +249,19 @@ describe("eLinkedList - test set method of linkedList", function() {
     linkedList.add('linkedList');
     linkedList.add('JavaScript');
     linkedList.add(57);
-    expect(linkedList.set(0, 25)).toBe(true);
+    expect(linkedList.set(1, 25)).toBe(true);
   });
 });
 
 describe("eLinkedList - test set method of linkedList", function() {
-  it("should replace element in specified index", function() {
+  it("should replace element in specified position", function() {
     var linkedList = new eLinkedList();
     linkedList.add('eStructures');
     linkedList.add('linkedList');
     linkedList.add('JavaScript');
     linkedList.add(57);
     linkedList.set(2, 100);
-    expect(linkedList.nodeAtIndex(2).data).toBe(100);
+    expect(linkedList.nodeAtPosition(2).data).toBe(100);
   });
 });
 
@@ -287,8 +288,48 @@ describe("eLinkedList - test removeFirst method of linkedList", function() {
   });
 });
 
+describe("eLinkedList - test remove method of linkedList", function() {
+  it("should return item removed from linkedList", function() {
+    var linkedList = new eLinkedList();
+    linkedList.add('eStructures');
+    linkedList.add('linkedList');
+    linkedList.add('JavaScript');
+    linkedList.add(57);
+    expect(linkedList.remove(2).data).toBe('linkedList');
+  });
+});
 
 
+describe("eLinkedList - test remove method of linkedList", function() {
+  it("should return item removed from linkedList", function() {
+    var linkedList = new eLinkedList();
+    linkedList.add('eStructures');
+    linkedList.add('linkedList');
+    linkedList.add('JavaScript');
+    linkedList.add(57);
+    expect(linkedList.remove(1).data).toBe('eStructures');
+  });
+});
 
+describe("eLinkedList - test remove method of linkedList", function() {
+  it("should return item removed from linkedList", function() {
+    var linkedList = new eLinkedList();
+    linkedList.add('eStructures');
+    linkedList.add('linkedList');
+    linkedList.add('JavaScript');
+    linkedList.add(57);
+    expect(linkedList.remove(4).data).toBe(57);
+    expect(linkedList.size()).toBe(3);
+  });
+});
+
+describe("eLinkedList - test remove method of linkedList", function() {
+  it("should return item removed from linkedList", function() {
+    var linkedList = new eLinkedList();
+    linkedList.add('nodeJS');
+    expect(linkedList.remove(1).data).toBe('nodeJS');
+    expect(linkedList.size()).toBe(0);
+  });
+});
 
 
