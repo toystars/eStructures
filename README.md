@@ -9,6 +9,7 @@ Extended data structures for JavaScript.
 * [Queue](https://github.com/toystars/eStructures/wiki/eQueue)
 * [Stack](https://github.com/toystars/eStructures/wiki/eStack)
 * [Priority Queue](https://github.com/toystars/eStructures/wiki/ePriorityQueue)
+* [Linked List](https://github.com/toystars/eStructures/wiki/eLinkedListg)
 
 
 ## Documentation
