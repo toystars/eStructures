@@ -1,0 +1,27 @@
+{
+  "name": "e-structures",
+  "description": "Extended data structures library for JavaScript",
+  "main": "index.js",
+  "authors": [
+    "Mustapha Babatunde Oluwaleke",
+    "Solarin-Sodara Oluwatoni"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "Data",
+    "Stuctures",
+    "eStrutures",
+    "JavaScript",
+    "Data",
+    "Structures"
+  ],
+  "homepage": "https://github.com/toystars/eStructures",
+  "moduleType": [],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
