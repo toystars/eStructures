@@ -55,6 +55,13 @@ var eLinkedList = function () {
   };
 
   /**
+   * Function to test empty status eLinkedList
+   */
+  linkedList.isEmpty = function () {
+    return length <= 0;
+  };
+
+  /**
     * Returns the element at the specified position of eLinkedList
     */
   linkedList.nodeAtPosition = function (position) {
@@ -201,6 +208,33 @@ var eLinkedList = function () {
       array.push(data);
     });
     return array;
+  };
+
+  /**
+   * Returns boolean
+   * @param {Object} linkedList - LinkedList to compare against
+   * @param {Function} compareFunction - Function to use as to compare two objects
+   */
+  linkedList.equal = function (linkedList, compareFunction) {
+    if (!linkedList || !linkedList.hasOwnProperty('getType') || linkedList.getType() !== 'eLinkedList') {
+      return false;
+    }
+    if (this.size() !== linkedList.size()) {
+      return false;
+    }
+
+    var callBack = compareFunction || eCompare;
+    var isEqual = true;
+    var isNotEqual = true;
+    this.iterate(function (data, position) {
+      var status = callBack(linkedList.nodeAtPosition(position).data, data);
+      if (!status) {
+        isNotEqual = status;
+      } else {
+        isEqual = status;
+      }
+    });
+    return !isNotEqual ? isNotEqual : isEqual;
   };
   
 
@@ -466,6 +500,33 @@ var eList = function () {
     */
   list.getIterator = function () {
     return iterator;
+  };
+
+  /**
+   * Returns boolean
+   * @param {Object} list - LinkedList to compare against
+   * @param {Function} compareFunction - Function to use as to compare two objects
+   */
+  list.equal = function (list, compareFunction) {
+    if (!list || !list.hasOwnProperty('getType') || list.getType() !== 'eList') {
+      return false;
+    }
+    if (this.size() !== list.size()) {
+      return false;
+    }
+
+    var callBack = compareFunction || eCompare;
+    var isEqual = true;
+    var isNotEqual = true;
+    this.forEach(function (data, position) {
+      var status = callBack(list.get(position - 1), data);
+      if (!status) {
+        isNotEqual = status;
+      } else {
+        isEqual = status;
+      }
+    });
+    return !isNotEqual ? isNotEqual : isEqual;
   };
 
   return list;
@@ -1052,7 +1113,7 @@ if (typeof module !== 'undefined' && module !== null && module.exports) {
   * @constructor
   */
 
-var eException = function(status, reason, errorCode) {
+var eException = function (status, reason, errorCode) {
   return {
     getType: function() {
       return 'eException';
@@ -1061,4 +1122,8 @@ var eException = function(status, reason, errorCode) {
     reason: reason || null, // description of the error
     errorCode: errorCode || null // different code for different exceptions based on implementation
   };
+};
+
+var eCompare = function (firstData, secondData) {
+  return firstData === secondData;
 };

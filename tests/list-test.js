@@ -306,3 +306,55 @@ describe("eList - remove element in given index", function() {
   });
 
 });
+
+describe("eList - test equal method of list", function() {
+  it("should return equal status of list", function() {
+    var list = new eList();
+    list.add(5);
+    list.add(10);
+    var otherList = new eList();
+    otherList.add(5);
+    otherList.add(10);
+    expect(list.equal(otherList)).toBeTruthy();
+  });
+});
+
+describe("eList - test equal method of list", function() {
+  it("should return equal status of list", function() {
+    var list = new eList();
+    list.add(53);
+    list.add(10);
+    var otherList = new eList();
+    otherList.add(5);
+    otherList.add(10);
+    expect(list.equal(otherList)).toBeFalsy();
+  });
+});
+
+describe("eList - test equal method of list using user defined comparator", function() {
+  it("should return equal status of list", function() {
+    var list = new eList();
+    list.add(53);
+    list.add(10);
+    var otherList = new eList();
+    otherList.add(5);
+    otherList.add(10);
+    expect(list.equal(otherList, function (firstData, secondData) {
+      return firstData === secondData;
+    })).toBeFalsy();
+  });
+});
+
+describe("eList - test equal method of list using user defined comparator", function() {
+  it("should return equal status of list", function() {
+    var list = new eList();
+    list.add({ name: 'c2g', status: true});
+    list.add({ name: 'andela', status: false });
+    var otherList = new eList();
+    otherList.add({ name: 'c2g', status: true});
+    otherList.add({ name: 'andela', status: false });
+    expect(list.equal(otherList, function (firstData, secondData) {
+      return firstData.name === secondData.name && firstData.status === secondData.status;
+    })).toBeTruthy();
+  });
+});

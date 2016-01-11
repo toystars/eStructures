@@ -55,6 +55,13 @@ var eLinkedList = function () {
   };
 
   /**
+   * Function to test empty status eLinkedList
+   */
+  linkedList.isEmpty = function () {
+    return length <= 0;
+  };
+
+  /**
     * Returns the element at the specified position of eLinkedList
     */
   linkedList.nodeAtPosition = function (position) {
@@ -201,6 +208,33 @@ var eLinkedList = function () {
       array.push(data);
     });
     return array;
+  };
+
+  /**
+   * Returns boolean
+   * @param {Object} linkedList - LinkedList to compare against
+   * @param {Function} compareFunction - Function to use as to compare two objects
+   */
+  linkedList.equal = function (linkedList, compareFunction) {
+    if (!linkedList || !linkedList.hasOwnProperty('getType') || linkedList.getType() !== 'eLinkedList') {
+      return false;
+    }
+    if (this.size() !== linkedList.size()) {
+      return false;
+    }
+
+    var callBack = compareFunction || eCompare;
+    var isEqual = true;
+    var isNotEqual = true;
+    this.iterate(function (data, position) {
+      var status = callBack(linkedList.nodeAtPosition(position).data, data);
+      if (!status) {
+        isNotEqual = status;
+      } else {
+        isEqual = status;
+      }
+    });
+    return !isNotEqual ? isNotEqual : isEqual;
   };
   
 

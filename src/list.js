@@ -255,6 +255,33 @@ var eList = function () {
     return iterator;
   };
 
+  /**
+   * Returns boolean
+   * @param {Object} list - LinkedList to compare against
+   * @param {Function} compareFunction - Function to use as to compare two objects
+   */
+  list.equal = function (list, compareFunction) {
+    if (!list || !list.hasOwnProperty('getType') || list.getType() !== 'eList') {
+      return false;
+    }
+    if (this.size() !== list.size()) {
+      return false;
+    }
+
+    var callBack = compareFunction || eCompare;
+    var isEqual = true;
+    var isNotEqual = true;
+    this.forEach(function (data, position) {
+      var status = callBack(list.get(position - 1), data);
+      if (!status) {
+        isNotEqual = status;
+      } else {
+        isEqual = status;
+      }
+    });
+    return !isNotEqual ? isNotEqual : isEqual;
+  };
+
   return list;
 
 };

@@ -8,7 +8,7 @@
   * @constructor
   */
 
-var eException = function(status, reason, errorCode) {
+var eException = function (status, reason, errorCode) {
   return {
     getType: function() {
       return 'eException';
@@ -17,4 +17,8 @@ var eException = function(status, reason, errorCode) {
     reason: reason || null, // description of the error
     errorCode: errorCode || null // different code for different exceptions based on implementation
   };
+};
+
+var eCompare = function (firstData, secondData) {
+  return firstData === secondData;
 };

@@ -2,13 +2,13 @@
   "name": "e-structures",
   "version": "1.0.1",
   "description": "Extended data structures library for JavaScript",
-  "main": "index.js",
+  "main": "dist/eStructures.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "https://c"
+    "url": "https://github.com/toystars/eStructures.git"
   },
   "keywords": [
     "Data",
