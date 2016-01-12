@@ -286,6 +286,4 @@ var eList = function () {
 
 };
 
-if (typeof module !== 'undefined' && module !== null && module.exports) {
-  module.exports = eList;
-}
+eGlobal.eList = eList;

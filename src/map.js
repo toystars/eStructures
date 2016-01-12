@@ -209,6 +209,4 @@ var eMap = function () {
 
 };
 
-if (typeof module !== 'undefined' && module !== null && module.exports) {
-  module.exports = eMap;
-}
+eGlobal.eMap = eMap;

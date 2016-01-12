@@ -107,6 +107,4 @@ var eQueue = function () {
 
 };
 
-if (typeof module !== 'undefined' && module !== null && module.exports) {
-  module.exports = eQueue;
-}
+eGlobal.eQueue = eQueue;

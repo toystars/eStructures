@@ -241,6 +241,4 @@ var eLinkedList = function () {
   return linkedList;
 };
 
-if (typeof module !== 'undefined' && module !== null && module.exports) {
-  module.exports = eLinkedList;
-}
+eGlobal.eLinkedList = eLinkedList;

@@ -114,6 +114,4 @@ var ePriorityQueue = function (compareFunction) {
 
 };
 
-if (typeof module !== 'undefined' && module !== null && module.exports) {
-  module.exports = ePriorityQueue;
-}
+eGlobal.ePriorityQueue = ePriorityQueue;

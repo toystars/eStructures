@@ -1,3 +1,9 @@
+
+var eGlobal = {};
+if (typeof module !== 'undefined' && module !== null && module.exports) {
+  module.exports = eGlobal;
+}
+
 /**
   * Creates an empty LinkedList.
   * @class A Linkedlist is a data structure that declares the behavior of a collection 
@@ -241,9 +247,7 @@ var eLinkedList = function () {
   return linkedList;
 };
 
-if (typeof module !== 'undefined' && module !== null && module.exports) {
-  module.exports = eLinkedList;
-}
+eGlobal.eLinkedList = eLinkedList;
 
 /**
   * Creates an empty List.
@@ -533,9 +537,7 @@ var eList = function () {
 
 };
 
-if (typeof module !== 'undefined' && module !== null && module.exports) {
-  module.exports = eList;
-}
+eGlobal.eList = eList;
 
 /**
   * Creates an empty Map.
@@ -748,9 +750,8 @@ var eMap = function () {
 
 };
 
-if (typeof module !== 'undefined' && module !== null && module.exports) {
-  module.exports = eMap;
-}
+eGlobal.eMap = eMap;
+
 /**
   * Creates an empty Queue.
   * @class A Priority Queue is a data structure that declares the behavior of a collection 
@@ -867,9 +868,8 @@ var ePriorityQueue = function (compareFunction) {
 
 };
 
-if (typeof module !== 'undefined' && module !== null && module.exports) {
-  module.exports = ePriorityQueue;
-}
+eGlobal.ePriorityQueue = ePriorityQueue;
+
 /**
   * Creates an empty Queue.
   * @class A Queue is a data structure that declares the behavior of a collection 
@@ -979,9 +979,8 @@ var eQueue = function () {
 
 };
 
-if (typeof module !== 'undefined' && module !== null && module.exports) {
-  module.exports = eQueue;
-}
+eGlobal.eQueue = eQueue;
+
 /**
   * Creates an empty stack.
   * @class A stack is a data structure that declares the behavior of a collection 
@@ -1099,9 +1098,7 @@ var eStack = function () {
 
 };
 
-if (typeof module !== 'undefined' && module !== null && module.exports) {
-  module.exports = eStack;
-}
+eGlobal.eStack = eStack;
 
   
 /**

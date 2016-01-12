@@ -115,6 +115,4 @@ var eStack = function () {
 
 };
 
-if (typeof module !== 'undefined' && module !== null && module.exports) {
-  module.exports = eStack;
-}
+eGlobal.eStack = eStack;
