@@ -375,28 +375,12 @@ describe("eLinkedList - test equal method of linkedList", function() {
 describe("eLinkedList - test equal method of linkedList using user defined comparator", function() {
   it("should return equal status of linkedList", function() {
     var linkedList = new eLinkedList();
-    linkedList.add(5);
-    linkedList.add(10);
-    var otherLinkedList = new eLinkedList();
-    otherLinkedList.add(51);
-    otherLinkedList.add(10);
-    expect(linkedList.equal(otherLinkedList, function (firstData, secondData) {
-      return firstData === secondData;
-    })).toBeFalsy();
-  });
-});
-
-describe("eLinkedList - test equal method of linkedList using user defined comparator", function() {
-  it("should return equal status of linkedList", function() {
-    var linkedList = new eLinkedList();
     linkedList.add({ name: 'c2g', status: true});
     linkedList.add({ name: 'andela', status: false });
     var otherLinkedList = new eLinkedList();
     otherLinkedList.add({ name: 'c2g', status: true});
     otherLinkedList.add({ name: 'andela', status: false });
-    expect(linkedList.equal(otherLinkedList, function (firstData, secondData) {
-      return firstData.name === secondData.name && firstData.status === secondData.status;
-    })).toBeTruthy();
+    expect(linkedList.equal(otherLinkedList)).toBeTruthy();
   });
 });
 
@@ -408,20 +392,6 @@ describe("eLinkedList - test equal method of linkedList using user defined compa
     var otherLinkedList = new eLinkedList();
     otherLinkedList.add({ name: 'c2g', status: true});
     otherLinkedList.add({ name: 'andela', status: true });
-    expect(linkedList.equal(otherLinkedList, function (firstData, secondData) {
-      return firstData.name === secondData.name && firstData.status === secondData.status;
-    })).toBeFalsy();
-  });
-});
-
-describe("eLinkedList - test equal method of linkedList", function() {
-  it("should return equal status of linkedList", function() {
-    var linkedList = new eLinkedList();
-    linkedList.add({ name: 'c2g', status: true});
-    linkedList.add({ name: 'andela', status: false });
-    var otherLinkedList = new eLinkedList();
-    otherLinkedList.add({ name: 'c2g', status: true});
-    otherLinkedList.add({ name: 'andela', status: false });
     expect(linkedList.equal(otherLinkedList)).toBeFalsy();
   });
 });
