@@ -15,10 +15,8 @@ var eMap = function () {
       return false;
     }
     // check for type of first argument
-    if (typeof params[0] !== 'string') {
-      return false;
-    }
-    return true;
+    return typeof params[0] === 'string';
+
   };
 
   var validateKeysToValues = function () {

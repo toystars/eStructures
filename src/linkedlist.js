@@ -213,28 +213,25 @@ var eLinkedList = function () {
   /**
    * Returns boolean
    * @param {Object} linkedList - LinkedList to compare against
-   * @param {Function} compareFunction - Function to use as to compare two objects
    */
-  linkedList.equal = function (linkedList, compareFunction) {
-    if (!linkedList || !linkedList.hasOwnProperty('getType') || linkedList.getType() !== 'eLinkedList') {
+  linkedList.equal = function (linkedList) {
+    if (!linkedList || !linkedList.hasOwnProperty('getType') || linkedList.getType() !== this.getType()) {
       return false;
     }
     if (this.size() !== linkedList.size()) {
       return false;
     }
-
-    var callBack = compareFunction || eCompare;
     var isEqual = true;
     var isNotEqual = true;
     this.iterate(function (data, position) {
-      var status = callBack(linkedList.nodeAtPosition(position).data, data);
+      var status = eCompare(linkedList.nodeAtPosition(position).data, data);
       if (!status) {
         isNotEqual = status;
       } else {
         isEqual = status;
       }
     });
-    return !isNotEqual ? isNotEqual : isEqual;
+    return isNotEqual === false ? isNotEqual : isEqual;
   };
   
 

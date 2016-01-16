@@ -10,6 +10,8 @@ Extended data structures for JavaScript.
 * [Stack](https://github.com/toystars/eStructures/wiki/eStack)
 * [Priority Queue](https://github.com/toystars/eStructures/wiki/ePriorityQueue)
 * [Linked List](https://github.com/toystars/eStructures/wiki/eLinkedList)
+* [Set](https://github.com/toystars/eStructures/wiki/eSet)
+
 
 
 ## How to use
@@ -20,6 +22,17 @@ $ npm install e-structures
 Install via bower
 ```bash
 $ bower install e-structures
+```
+
+## Simple usage
+```javascript
+
+// for node
+var eStruct = require('e-structures');
+var list = new eStruct.eList();
+
+// for browser, after pointing to the dist/eStructures.min.js file, all data structures are available globally
+var list = new eList();
 ```
 
 
