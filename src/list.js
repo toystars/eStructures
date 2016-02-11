@@ -26,10 +26,7 @@ var eList = function () {
   };
 
   var isValidIndex = function (number) {
-    if ((typeof number !== 'number') || (number % 1 !== 0) || (number < 0)) {
-      return false;
-    }
-    return true;
+    return !((typeof number !== 'number') || (number % 1 !== 0) || (number < 0));
   };
 
 
@@ -60,7 +57,7 @@ var eList = function () {
     * @param {Integer} index - Optional index to add the element. If no index is specified
     * the element is added to the end of the list.
     * @param {Object} item - Element to be added (must always be present).
-    * @return {Integer} Non-negeative integer if the element was added or -1 if error occurs
+    * @return {Integer} Non-negative integer if the element was added or -1 if error occurs
     */
   list.add = function (index, item) {
     // if arguments.length === 0 || > 2, throw error
@@ -100,7 +97,7 @@ var eList = function () {
     * @param {Integer} index - Optional index to add the eList. If no index is specified
     * the eList is added to the end of the list.
     * @param {Object} eList - List to be added (must always be present).
-    * @return {Integer} Non-negeative integer if the eList was added or -1 if error occurs
+    * @return {Integer} Non-negative integer if the eList was added or -1 if error occurs
     */
   list.addAll = function (index, eList) {
     // if arguments.length === 0 || > 2, throw error
@@ -152,7 +149,7 @@ var eList = function () {
     * Replace the element in specified index with povided element
     * @param {Integer} index - index to of element to be replaced
     * @param {Object} item - new element to be placed in specified index
-    * @return {boolean} true if element is replaced successfully, false if error occurs
+    * @return {Integer} positive integer if element is replaced successfully, -1 if error occurs
     */
   list.set = function (index, item) {
     // if arguments.length === 0 || > 2, throw error

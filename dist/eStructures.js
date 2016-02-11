@@ -274,10 +274,7 @@ var eList = function () {
   };
 
   var isValidIndex = function (number) {
-    if ((typeof number !== 'number') || (number % 1 !== 0) || (number < 0)) {
-      return false;
-    }
-    return true;
+    return !((typeof number !== 'number') || (number % 1 !== 0) || (number < 0));
   };
 
 
@@ -308,7 +305,7 @@ var eList = function () {
     * @param {Integer} index - Optional index to add the element. If no index is specified
     * the element is added to the end of the list.
     * @param {Object} item - Element to be added (must always be present).
-    * @return {Integer} Non-negeative integer if the element was added or -1 if error occurs
+    * @return {Integer} Non-negative integer if the element was added or -1 if error occurs
     */
   list.add = function (index, item) {
     // if arguments.length === 0 || > 2, throw error
@@ -348,7 +345,7 @@ var eList = function () {
     * @param {Integer} index - Optional index to add the eList. If no index is specified
     * the eList is added to the end of the list.
     * @param {Object} eList - List to be added (must always be present).
-    * @return {Integer} Non-negeative integer if the eList was added or -1 if error occurs
+    * @return {Integer} Non-negative integer if the eList was added or -1 if error occurs
     */
   list.addAll = function (index, eList) {
     // if arguments.length === 0 || > 2, throw error
@@ -400,7 +397,7 @@ var eList = function () {
     * Replace the element in specified index with povided element
     * @param {Integer} index - index to of element to be replaced
     * @param {Object} item - new element to be placed in specified index
-    * @return {boolean} true if element is replaced successfully, false if error occurs
+    * @return {Integer} positive integer if element is replaced successfully, -1 if error occurs
     */
   list.set = function (index, item) {
     // if arguments.length === 0 || > 2, throw error
@@ -1045,7 +1042,7 @@ var eSet = function(array) {
     if (array && array instanceof Array) {
 
       for (var i = 0; i < array.length; i++) {
-        set.add(array[i]);
+        this.add(array[i]);
       }
     }
     return false;
@@ -1076,7 +1073,7 @@ var eSet = function(array) {
    * @return {Object} Last element, undefined if set is empty
    */
   set.pop = function () {
-    if (set.length === 0) {
+    if (this.length === 0) {
       return undefined;
     }
     var last = values.splice(values.length - 1, 1);
@@ -1089,7 +1086,7 @@ var eSet = function(array) {
    * @return {Object} First element, undefined if set is empty
    */
   set.shift = function () {
-    if (set.length === 0) {
+    if (this.length === 0) {
       return undefined;
     }
     var last = values.splice(0, 1);
@@ -1258,7 +1255,7 @@ var eSet = function(array) {
    */
   set.isMaths = function () {
     var status = true;
-    set.forEach(function (currentElement) {
+    this.forEach(function (currentElement) {
       if (typeof currentElement !== 'number') {
         status = false;
       }
@@ -1295,7 +1292,7 @@ var eSet = function(array) {
    * Get mean of set (If it is a mathematical set)
    * @return {Object} Number
    */
-  set.average = function () {
+  set.mean = function () {
     if (this.isMaths()) {
       var sum = 0;
       var collection = [];
@@ -1304,6 +1301,43 @@ var eSet = function(array) {
         collection = wholeCollection;
       });
       return sum / collection.length;
+    }
+    return undefined;
+  };
+
+
+  /**
+   * Get variance of set (If it is a mathematical set)
+   * @param {Number} decimalPlace - optional decimal place to format the result
+   * @return {Object} Number
+   */
+  set.variance = function (decimalPlace) {
+    if (this.isMaths() && this.size() > 0) {
+      var place = (typeof decimalPlace === 'number' && (decimalPlace % 1) === 0) ? decimalPlace : 2;
+      var mean = this.mean();
+      var subMeanSquared = [];
+      var subMeanSquaredSum = 0;
+      this.forEach(function (currentElement) {
+        subMeanSquared.push(Math.pow(currentElement - mean, 2));
+      });
+      for (var x = 0; x < subMeanSquared.length; x++) {
+        subMeanSquaredSum += subMeanSquared[x];
+      }
+      return parseFloat((subMeanSquaredSum / (this.size() - 1)).toFixed(place));
+    }
+    return undefined;
+  };
+
+  /**
+   * Get standard deviation of set (If it is a mathematical set)
+   * @param {Number} decimalPlace - optional decimal place to format the result
+   * @return {Object} Number
+   */
+  set.standardDeviation = function (decimalPlace) {
+    var variance = this.variance();
+    if (variance) {
+      var place = (typeof decimalPlace === 'number' && (decimalPlace % 1) === 0) ? decimalPlace : 2;
+      return parseFloat(Math.sqrt(variance).toFixed(place));
     }
     return undefined;
   };
@@ -1337,7 +1371,7 @@ var eSet = function(array) {
   return set;
 };
 
-eGlobal.eMap = eMap;
+eGlobal.eSet = eSet;
 
 /**
   * Creates an empty stack.

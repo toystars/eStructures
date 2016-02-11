@@ -265,10 +265,10 @@ describe("eSet - test min method of set", function () {
   });
 });
 
-describe("eSet - test average method of set", function () {
+describe("eSet - test mean method of set", function () {
   it("should return the mean of set (only meant for mathematical sets)", function () {
     var set = new eSet([2, 8, 5]);
-    expect(set.average()).toBe(5);
+    expect(set.mean()).toBe(5);
   });
 });
 
@@ -357,4 +357,48 @@ describe("eSet - test removeFromIndex method of set", function () {
     expect(set.removeFromIndex(9)).toBeUndefined();
   });
 });
+
+describe("eSet - test variance method of set", function () {
+  it("should return variance of set, undefined if error occurs", function () {
+    var set = new eSet([17, 15, 23, 7, 9, 13]);
+    expect(set.variance(2)).toBe(33.2);
+  });
+});
+
+describe("eSet - test variance method of set", function () {
+  it("should return undefined as set is not a maths set", function () {
+    var set = new eSet([1, 2, 5, 7, 'Set']);
+    expect(set.variance(2)).toBeUndefined();
+  });
+});
+
+describe("eSet - test variance method of set", function () {
+  it("should return variance of set, undefined if error occurs", function () {
+    var set = new eSet([17, 15, 23, 7, 9, 13]);
+    expect(set.variance('eSet')).toBe(33.2);
+  });
+});
+
+describe("eSet - test standard deviation method of set", function () {
+  it("should return standard deviation of set, undefined if error occurs", function () {
+    var set = new eSet([17, 15, 23, 7, 9, 13]);
+    expect(set.standardDeviation(2)).toEqual(5.76);
+  });
+});
+
+describe("eSet - test standard deviation method of set", function () {
+  it("should return undefined as set is not a maths set", function () {
+    var set = new eSet([1, 2, 5, 7, 'Set']);
+    expect(set.standardDeviation(2)).toBeUndefined();
+  });
+});
+
+
+describe("eSet - test standard deviation method of set", function () {
+  it("should return standard deviation of set, undefined if error occurs", function () {
+    var set = new eSet([17, 15, 23, 7, 9, 13]);
+    expect(set.standardDeviation('eSet')).toEqual(5.76);
+  });
+});
+
 
