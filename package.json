@@ -1,6 +1,6 @@
 {
   "name": "e-structures",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "Extended data structures library for JavaScript",
   "main": "./index",
   "scripts": {
