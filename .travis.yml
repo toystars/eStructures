@@ -1,6 +1,12 @@
 language: node_js
+
 node_js:
-  - "0.10"
+  - stable
+
 before_script:
   - npm install -g gulp
-script: gulp tdd
+
+script:
+  - npm run cover
+
+after_script: "cat coverage/lcov.info | node_modules/coveralls/bin/coveralls.js"

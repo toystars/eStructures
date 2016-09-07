@@ -4,7 +4,8 @@
   "description": "Extended data structures library for JavaScript",
   "main": "./index",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "cover": "node_modules/istanbul/lib/cli.js cover gulp tdd"
   },
   "repository": {
     "type": "git",
@@ -21,11 +22,13 @@
   "author": "Mustapha Babatunde Oluwaleke, Solarin-Sodara Oluwatoni",
   "license": "MIT",
   "devDependencies": {
+    "coveralls": "^2.11.12",
     "gulp": "^3.9.0",
     "gulp-concat": "^2.6.0",
     "gulp-jshint": "^2.0.0",
     "gulp-rename": "^1.2.2",
     "gulp-uglify": "^1.5.1",
+    "istanbul": "^0.4.5",
     "jasmine-core": "^2.3.4",
     "jshint": "^2.9.1-rc1",
     "karma": "^0.13.15",

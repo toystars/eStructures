@@ -1,4 +1,4 @@
-# e-structures  [![Build Status](https://travis-ci.org/toystars/eStructures.svg?branch=master)](https://travis-ci.org/toystars/eStructures)
+# e-structures  [![Build Status](https://travis-ci.org/toystars/eStructures.svg?branch=master)](https://travis-ci.org/toystars/eStructures) [![Coverage Status](https://coveralls.io/repos/github/toystars/eStructures/badge.svg)](https://coveralls.io/github/toystars/eStructures) [![npm](https://img.shields.io/npm/v/e-structures.svg)](https://www.npmjs.com/package/e-structures) [![Downloads](https://img.shields.io/npm/dt/e-structures.svg)](https://www.npmjs.com/package/e-structures) [![Licence](https://img.shields.io/npm/l/e-structures.svg)](https://www.npmjs.com/package/e-structures) 
 
 Extended data structures for JavaScript.
 
